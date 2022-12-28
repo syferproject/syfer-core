@@ -1,12 +1,4 @@
-![image](https://github.com/SyferNetwork/syfer-imagery/blob/master/logos/splash.png)
-
 # Syfer Core (CLI)
-
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/SyferNetwork/syfer-core)](https://github.com/SyferNetwork/syfer-core/releases/latest)
-[![Ubuntu 20.04](https://github.com/SyferNetwork/syfer-core/actions/workflows/ubuntu20.yml/badge.svg)](https://github.com/SyferNetwork/syfer-core/actions/workflows/ubuntu20.yml)
-[![Ubuntu 18.04](https://github.com/SyferNetwork/syfer-core/actions/workflows/ubuntu18.yml/badge.svg)](https://github.com/SyferNetwork/syfer-core/actions/workflows/ubuntu18.yml)
-[![Windows](https://github.com/SyferNetwork/syfer-core/actions/workflows/windows.yml/badge.svg)](https://github.com/SyferNetwork/syfer-core/actions/workflows/windows.yml)
-[![macOS](https://github.com/SyferNetwork/syfer-core/actions/workflows/macOS.yml/badge.svg)](https://github.com/SyferNetwork/syfer-core/actions/workflows/macOS.yml)
 
 Maintained by Syfer Developers, overseen by Syfer Team and driven by Syfer Community.
 
