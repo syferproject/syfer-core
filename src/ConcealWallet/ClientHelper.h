@@ -1,4 +1,4 @@
-// Copyright (c) 2018-2022 Conceal Network & Conceal Devs
+// Copyright (c) 2018-2022 Syfer Network & Syfer Devs
 //
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.

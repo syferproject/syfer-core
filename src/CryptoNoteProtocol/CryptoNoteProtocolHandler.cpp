@@ -1,8 +1,8 @@
 // Copyright (c) 2011-2017 The Cryptonote developers
-// Copyright (c) 2017-2018 The Circle Foundation & Conceal Devs
+// Copyright (c) 2017-2018 The Circle Foundation & Syfer Devs
 // Copyright (c) 2018-2019 The TurtleCoin developers
 // Copyright (c) 2016-2020 The Karbo developers
-// Copyright (c) 2018-2022 Conceal Network & Conceal Devs
+// Copyright (c) 2018-2022 Syfer Network & Syfer Devs
 //
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
@@ -690,7 +690,7 @@ bool CryptoNoteProtocolHandler::on_connection_synchronized()
   if (m_synchronized.compare_exchange_strong(val_expected, true))
   {
     logger(logging::INFO) << ENDL << "********************************************************************************" << ENDL
-                          << "You are now synchronized with the Conceal network." << ENDL
+                          << "You are now synchronized with the Syfer network." << ENDL
                           << "Please note, that the blockchain will be saved only after you quit the daemon" << ENDL
                           << "with the \"exit\" command or if you use the \"save\" command." << ENDL
                           << "Otherwise, you will possibly need to synchronize the blockchain again." << ENDL

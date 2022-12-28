@@ -1,6 +1,6 @@
 // Copyright (c) 2011-2017 The Cryptonote Developers
-// Copyright (c) 2017-2018 The Circle Foundation & Conceal Devs
-// Copyright (c) 2018-2022 Conceal Network & Conceal Devs
+// Copyright (c) 2017-2018 The Circle Foundation & Syfer Devs
+// Copyright (c) 2018-2022 Syfer Network & Syfer Devs
 //
 //
 // Distributed under the MIT/X11 software license, see the accompanying
@@ -109,7 +109,7 @@ namespace cn
 		const uint64_t UPGRADE_HEIGHT_V4 = 45000;	  /* MixIn 2 */
 		const uint64_t UPGRADE_HEIGHT_V5 = 98160;	  /* Deposits 2.0, Investments 1.0 */
 		const uint64_t UPGRADE_HEIGHT_V6 = 104200;	  /* LWMA3 */
-		const uint64_t UPGRADE_HEIGHT_V7 = 195765;	  /* Cryptoight Conceal */
+		const uint64_t UPGRADE_HEIGHT_V7 = 195765;	  /* Cryptoight Syfer */
 		const uint64_t UPGRADE_HEIGHT_V8 = 661300;	  /* LWMA1, CN-GPU, Halving */
 		const unsigned UPGRADE_VOTING_THRESHOLD = 90; // percent
 		const size_t UPGRADE_VOTING_WINDOW = EXPECTED_NUMBER_OF_BLOCKS_PER_DAY;
@@ -122,7 +122,7 @@ namespace cn
 		const uint64_t TESTNET_UPGRADE_HEIGHT_V4 = 24;	  /* MixIn 2 */
 		const uint64_t TESTNET_UPGRADE_HEIGHT_V5 = 36;	  /* Deposits 2.0, Investments 1.0 */
 		const uint64_t TESTNET_UPGRADE_HEIGHT_V6 = 48;	  /* LWMA3 */
-		const uint64_t TESTNET_UPGRADE_HEIGHT_V7 = 60;	  /* Cryptoight Conceal */
+		const uint64_t TESTNET_UPGRADE_HEIGHT_V7 = 60;	  /* Cryptoight Syfer */
 		const uint64_t TESTNET_UPGRADE_HEIGHT_V8 = 72;	  /* LWMA1, CN-GPU, Halving */
 
 		const uint32_t TESTNET_DEPOSIT_MIN_TERM_V3 = 30;		/* testnet deposits 1 month -> 1 hour */
@@ -150,7 +150,7 @@ namespace cn
 	const uint64_t MAX_BLOCK_REWARD_V1 = (UINT64_C(6) * parameters::COIN);
 	const uint64_t REWARD_INCREASE_INTERVAL = (UINT64_C(21900));			   // aprox. 1 month (+ 0.25 CCX increment per month)
 
-	const char BLOCKCHAIN_DIR[] = "conceal";
+	const char BLOCKCHAIN_DIR[] = "syfer";
 	const char GENESIS_COINBASE_TX_HEX[] = "010a01ff0001c096b102029b2e4c0281c0b02e7c53291a94d1d0cbff8883f8024f5142ee494ffbbd08807121017d6775185749e95ac2d70cae3f29e0e46f430ab648abbe9fdc61d8e7437c60f8";
 	const uint32_t GENESIS_NONCE = 10000;
 	const uint64_t GENESIS_TIMESTAMP = 1527078920;
@@ -161,7 +161,7 @@ namespace cn
 	const uint8_t BLOCK_MAJOR_VERSION_2 = 2; // (Consensus II)
 	const uint8_t BLOCK_MAJOR_VERSION_3 = 3; // (Consensus III)
 	const uint8_t BLOCK_MAJOR_VERSION_4 = 4; // LWMA3
-	const uint8_t BLOCK_MAJOR_VERSION_7 = 7; /* Cryptonight Conceal */
+	const uint8_t BLOCK_MAJOR_VERSION_7 = 7; /* Cryptonight Syfer */
 	const uint8_t BLOCK_MAJOR_VERSION_8 = 8; /* LWMA1, CN-GPU, Halving */
 	const uint8_t BLOCK_MINOR_VERSION_0 = 0;
 	const uint8_t BLOCK_MINOR_VERSION_1 = 1;

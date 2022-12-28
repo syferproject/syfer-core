@@ -1,4 +1,4 @@
-// Copyright (c) 2018-2022 Conceal Network & Conceal Devs
+// Copyright (c) 2018-2022 Syfer Network & Syfer Devs
 //
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
@@ -6,7 +6,7 @@
 #include <fstream>
 #include <boost/program_options.hpp>
 
-#include "ConcealWallet.h"
+#include "SyferWallet.h"
 #include "ClientHelper.h"
 #include "Const.h"
 
@@ -55,7 +55,7 @@ int main(int argc, char* argv[])
   desc_all.add(desc_general).add(desc_params);
 
   logging::LoggerManager logManager;
-  logging::LoggerRef logger(logManager, "concealwallet");
+  logging::LoggerRef logger(logManager, "syferwallet");
   platform_system::Dispatcher dispatcher;
 
   po::variables_map vm;
@@ -201,7 +201,7 @@ int main(int argc, char* argv[])
   else
   {
     //runs wallet with console interface
-    cn::conceal_wallet cwal(dispatcher, currency, logManager);
+    cn::syfer_wallet cwal(dispatcher, currency, logManager);
 
     if (!cwal.init(vm))
     {

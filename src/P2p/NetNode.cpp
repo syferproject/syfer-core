@@ -1,8 +1,8 @@
 // Copyright (c) 2011-2017 The Cryptonote developers
-// Copyright (c) 2017-2018 The Circle Foundation & Conceal Devs
+// Copyright (c) 2017-2018 The Circle Foundation & Syfer Devs
 // Copyright (c) 2018-2019 The TurtleCoin developers
 // Copyright (c) 2016-2020 The Karbo developers
-// Copyright (c) 2018-2022 Conceal Network & Conceal Devs
+// Copyright (c) 2018-2022 Syfer Network & Syfer Devs
 //
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
@@ -77,7 +77,7 @@ void addPortMapping(const logging::LoggerRef& logger, uint32_t port) {
       std::ostringstream portString;
       portString << port;
       if (UPNP_AddPortMapping(urls.controlURL, igdData.first.servicetype, portString.str().c_str(),
-        portString.str().c_str(), lanAddress, "conceal", "TCP", nullptr, "0") != 0) {
+        portString.str().c_str(), lanAddress, "syfer", "TCP", nullptr, "0") != 0) {
         logger(ERROR) << "UPNP port mapping failed.";
       } else {
         logger(INFO, BRIGHT_GREEN) << "Added IGD port mapping.";
@@ -662,7 +662,7 @@ namespace cn
     {
       logger(logging::WARNING) << context
                                << "COMMAND_HANDSHAKE Warning, your software may be out of date. Please visit: "
-                               << "https://github.com/concealnetwork/conceal-core/releases for the latest version.";
+                               << "https://github.com/syfernetwork/syfer-core/releases for the latest version.";
     }
 
     if (!handle_remote_peerlist(rsp.local_peerlist, rsp.node_data.local_time, context)) {

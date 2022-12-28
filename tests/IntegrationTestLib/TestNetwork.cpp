@@ -13,9 +13,9 @@
 #include "RPCTestNode.h"
 
 #ifdef _WIN32
-const std::string daemonExec = "conceald.exe";
+const std::string daemonExec = "syferd.exe";
 #else
-const std::string daemonExec = "conceald";
+const std::string daemonExec = "syferd";
 #endif
 
 namespace {
@@ -126,7 +126,7 @@ TestNodeConfiguration TestNetworkBuilder::buildNodeConfiguration(size_t index) {
 
   cfg.daemonPath = daemonExec; // default
   cfg.testnet = testnet;
-  cfg.logFile = "test_conceald" + std::to_string(index) + ".log";
+  cfg.logFile = "test_syferd" + std::to_string(index) + ".log";
 
   uint16_t rpcPort = static_cast<uint16_t>(rpcBasePort + index);
   uint16_t p2pPort = static_cast<uint16_t>(p2pBasePort + index);

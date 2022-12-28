@@ -1,6 +1,6 @@
 // Copyright (c) 2011-2017 The Cryptonote developers
-// Copyright (c) 2017-2018 The Circle Foundation & Conceal Devs
-// Copyright (c) 2018-2022 Conceal Network & Conceal Devs
+// Copyright (c) 2017-2018 The Circle Foundation & Syfer Devs
+// Copyright (c) 2018-2022 Syfer Network & Syfer Devs
 //
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
@@ -519,7 +519,7 @@ bool get_block_longhash(cn_context &context, const Block& b, Hash& res) {
   if (b.majorVersion >= 8) {
     cn_gpu_hash_v0(context, bd.data(), bd.size(), res);
   } else if (b.majorVersion >= 7) {
-    cn_conceal_slow_hash_v0(context, bd.data(), bd.size(), res);
+    cn_syfer_slow_hash_v0(context, bd.data(), bd.size(), res);
   } else if (b.majorVersion >= 3) {
     cn_fast_slow_hash_v1(context, bd.data(), bd.size(), res);
   } else {

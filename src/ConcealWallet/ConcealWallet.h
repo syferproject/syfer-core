@@ -1,6 +1,6 @@
 // Copyright (c) 2011-2017 The Cryptonote developers
-// Copyright (c) 2017-2018 The Circle Foundation & Conceal Devs
-// Copyright (c) 2018-2022 Conceal Network & Conceal Devs
+// Copyright (c) 2017-2018 The Circle Foundation & Syfer Devs
+// Copyright (c) 2018-2022 Syfer Network & Syfer Devs
 //
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
@@ -35,9 +35,9 @@ namespace cn
   /************************************************************************/
   /*                                                                      */
   /************************************************************************/
-  class conceal_wallet : public cn::INodeObserver, public cn::IWalletLegacyObserver, public cn::INodeRpcProxyObserver {
+  class syfer_wallet : public cn::INodeObserver, public cn::IWalletLegacyObserver, public cn::INodeRpcProxyObserver {
   public:
-    conceal_wallet(platform_system::Dispatcher& dispatcher, const cn::Currency& currency, logging::LoggerManager& log);
+    syfer_wallet(platform_system::Dispatcher& dispatcher, const cn::Currency& currency, logging::LoggerManager& log);
 
     bool init(const boost::program_options::variables_map& vm);
     bool deinit();
@@ -128,8 +128,8 @@ namespace cn
     class refresh_progress_reporter_t
     {
     public:
-      refresh_progress_reporter_t(cn::conceal_wallet& conceal_wallet)
-        : m_conceal_wallet(conceal_wallet)
+      refresh_progress_reporter_t(cn::syfer_wallet& syfer_wallet)
+        : m_syfer_wallet(syfer_wallet)
         , m_blockchain_height(0)
         , m_blockchain_height_update_time()
         , m_print_time()
@@ -139,7 +139,7 @@ namespace cn
       void update(uint64_t height, bool force = false)
       {
         auto current_time = std::chrono::system_clock::now();
-        if (std::chrono::seconds(m_conceal_wallet.currency().difficultyTarget() / 2) < current_time - m_blockchain_height_update_time ||
+        if (std::chrono::seconds(m_syfer_wallet.currency().difficultyTarget() / 2) < current_time - m_blockchain_height_update_time ||
             m_blockchain_height <= height) {
           update_blockchain_height();
           m_blockchain_height = (std::max)(m_blockchain_height, height);
@@ -154,13 +154,13 @@ namespace cn
     private:
       void update_blockchain_height()
       {
-        uint64_t blockchain_height = m_conceal_wallet.m_node->getLastLocalBlockHeight();
+        uint64_t blockchain_height = m_syfer_wallet.m_node->getLastLocalBlockHeight();
         m_blockchain_height = blockchain_height;
         m_blockchain_height_update_time = std::chrono::system_clock::now();
       }
 
     private:
-      cn::conceal_wallet& m_conceal_wallet;
+      cn::syfer_wallet& m_syfer_wallet;
       uint64_t m_blockchain_height;
       std::chrono::system_clock::time_point m_blockchain_height_update_time;
       std::chrono::system_clock::time_point m_print_time;

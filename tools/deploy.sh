@@ -1,8 +1,8 @@
 #!/bin/bash
 
-GIT_URL="https://github.com/ConcealNetwork/conceal-core"
-BIN_DIR="$HOME/.local/src/conceal-core/build/src"
-WALLETBIN="concealwallet"
+GIT_URL="https://github.com/SyferNetwork/syfer-core"
+BIN_DIR="$HOME/.local/src/syfer-core/build/src"
+WALLETBIN="syferwallet"
 BRANCH="master"
 
 INSTALL=0
@@ -36,44 +36,44 @@ installDeps() {
 	sudo $PKGMAN_CMD $PACKAGES
 }
 
-# Get conceal-core
-getConceal() {
+# Get syfer-core
+getSyfer() {
 	[ ! -d "$HOME/.local/src" ] && mkdir -p "$HOME/.local/src"
 
-	git clone $GIT_URL -b $BRANCH $HOME/.local/src/conceal-core && \
-		mkdir $HOME/.local/src/conceal-core/build || exit
-	buildConceal
+	git clone $GIT_URL -b $BRANCH $HOME/.local/src/syfer-core && \
+		mkdir $HOME/.local/src/syfer-core/build || exit
+	buildSyfer
 }
 
-buildConceal() {
-	cd $HOME/.local/src/conceal-core/build
+buildSyfer() {
+	cd $HOME/.local/src/syfer-core/build
 
 	cmake .. > buildlog 3>&1 1>&2 2>&3 3>&- && make -j$JOBS >> buildLog 3>&1 1>&2 2>&3 3>&- || buildFail
 
-	which conceald > /dev/null 2>&1 || addToPath
+	which syferd > /dev/null 2>&1 || addToPath
 	echo "Build Completed at $(date +'%-I:%M%p on %A %-d %B %Y')"
 	exit 0
 }
 
 # The build failed
 buildFail() {
-	printf "An error occured when building - check $HOME/.local/src/conceal-core/build/buildLog for information.\n"
+	printf "An error occured when building - check $HOME/.local/src/syfer-core/build/buildLog for information.\n"
 	exit 1
 }
 
-# Update the existing conceal installation
-updateConceal() {
-	cd $HOME/.local/src/conceal-core
+# Update the existing syfer installation
+updateSyfer() {
+	cd $HOME/.local/src/syfer-core
 
 	echo "Pulling new commits..."
 	git pull
-	buildConceal
+	buildSyfer
 	exit 0
 }
 
-# Open a wallet using concealwallet
+# Open a wallet using syferwallet
 openWallet() {
-	which concealwallet > /dev/null 2>&1 || WALLETBIN="$BIN_DIR/concealwallet"
+	which syferwallet > /dev/null 2>&1 || WALLETBIN="$BIN_DIR/syferwallet"
 
 	[ "$TESTNET" = 1 ] && WALLET_ARGS="$WALLET_ARGS --testnet"
 	[ ! -z "$DAEMON_ADDR" ] && WALLET_ARGS="$WALLET_ARGS --daemon-address=$DAEMON_ADDR"
@@ -98,15 +98,15 @@ addToPath() {
 # Show available arguments - ie. Help
 scriptHelp() {
 	cat << EOF
-Conceal Core Deployment Script
+Syfer Core Deployment Script
 ==============================
 
 General Flags
   --help    | -h       Show this help text
   --dev     | -d       Use the 'development' branch
   --master  | -m       Use the 'master' branch (default)
-  --install | -i       Install conceal-core
-  --update  | -u       Update conceal-core
+  --install | -i       Install syfer-core
+  --update  | -u       Update syfer-core
 
 Wallet Control
   --open    | -o       Open a wallet (--open <file>)
@@ -137,6 +137,6 @@ while test "$#" -gt 0; do
 	esac
 	shift
 done
-[ "$INSTALL" = "1" ] && installDeps && getConceal
-[ "$UPDATE" = "1" ] && updateConceal
+[ "$INSTALL" = "1" ] && installDeps && getSyfer
+[ "$UPDATE" = "1" ] && updateSyfer
 [ ! -z "$WALLET" ] && openWallet "$WALLET"

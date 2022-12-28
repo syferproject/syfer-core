@@ -35,7 +35,7 @@ jobs:
           mkdir "$build_folder"
           cd "$build_folder"
           cmake -G "Visual Studio 16 2019" ..
-          msbuild concealX.sln /p:Configuration=Release /m
+          msbuild syferX.sln /p:Configuration=Release /m
           cd src\Release
           Compress-Archive -Path *.exe -DestinationPath "$release_name.zip"
           $sha256 = (Get-FileHash "$release_name.zip").Hash
@@ -53,7 +53,7 @@ jobs:
         uses: softprops/action-gh-release@v0.1.12
         with:
           files: ${{ steps.build.outputs.asset_path }}
-          name: Conceal Core CLI v${{ steps.build.outputs.ccx_version }}
+          name: Syfer Core CLI v${{ steps.build.outputs.ccx_version }}
           body: |
             [Download for Windows](../../releases/download/${{ steps.build.outputs.ccx_version }}/${{ steps.build.outputs.release_name }}) **${{ steps.build.outputs.release_name }}**
             `SHA256 : ${{ steps.build.outputs.sha256 }}`

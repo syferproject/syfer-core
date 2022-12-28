@@ -44,43 +44,43 @@ jobs:
           mkdir build
           cd build
           cmake .. -G "Visual Studio 16 2019" -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTS=ON
-          msbuild concealX.sln /p:Configuration=Release /m:2
+          msbuild syferX.sln /p:Configuration=Release /m:2
 
       - name: Prepare release
         shell: powershell
         run: |
-          mkdir build/conceal
-          mv build/src/Release/conceald.exe build/conceal
-          mv build/src/Release/concealwallet.exe build/conceal
-          mv build/src/Release/optimizer.exe build/conceal
-          mv build/src/Release/walletd.exe build/conceal
-          cp build/tests/Release/*_tests.exe build/conceal
+          mkdir build/syfer
+          mv build/src/Release/syferd.exe build/syfer
+          mv build/src/Release/syferwallet.exe build/syfer
+          mv build/src/Release/optimizer.exe build/syfer
+          mv build/src/Release/walletd.exe build/syfer
+          cp build/tests/Release/*_tests.exe build/syfer
 
       - name: Upload To GH Artifacts
         uses: actions/upload-artifact@v2
         with:
           name: ${{ steps.setup.outputs.release_name }}
-          path: build/conceal
+          path: build/syfer
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: core_tests
         shell: powershell
         run: |
-          cd build/conceal
+          cd build/syfer
           ./core_tests.exe --generate_and_play_test_data
 
       - name: difficulty_tests
         shell: powershell
         run: |
-          cp tests/Difficulty/data.txt build/conceal
-          cd build/conceal
+          cp tests/Difficulty/data.txt build/syfer
+          cd build/syfer
           ./difficulty_tests.exe data.txt
 
       - name: performance_tests
         shell: powershell
         run: |
-          cd build/conceal
+          cd build/syfer
           ./performance_tests.exe
       
       - name: unit_tests
@@ -127,38 +127,38 @@ jobs:
       - name: Prepare release
         shell: msys2 {0}
         run: |
-          mkdir build/conceal
-          mv build/src/conceald.exe build/conceal
-          mv build/src/concealwallet.exe build/conceal
-          mv build/src/optimizer.exe build/conceal
-          mv build/src/walletd.exe build/conceal
-          cp build/tests/*_tests.exe build/conceal
+          mkdir build/syfer
+          mv build/src/syferd.exe build/syfer
+          mv build/src/syferwallet.exe build/syfer
+          mv build/src/optimizer.exe build/syfer
+          mv build/src/walletd.exe build/syfer
+          cp build/tests/*_tests.exe build/syfer
 
       - name: Upload To GH Artifacts
         uses: actions/upload-artifact@v2
         with:
           name: ${{ steps.setup.outputs.release_name }}
-          path: build/conceal
+          path: build/syfer
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: core_tests
         shell: powershell
         run: |
-          cd build/conceal
+          cd build/syfer
           ./core_tests.exe --generate_and_play_test_data
 
       - name: difficulty_tests
         shell: powershell
         run: |
-          cp tests/Difficulty/data.txt build/conceal
-          cd build/conceal
+          cp tests/Difficulty/data.txt build/syfer
+          cd build/syfer
           ./difficulty_tests.exe data.txt
 
       - name: performance_tests
         shell: powershell
         run: |
-          cd build/conceal
+          cd build/syfer
           ./performance_tests.exe
       
       - name: unit_tests
@@ -196,40 +196,40 @@ jobs:
 
       - name: Prepare release
         run: |
-          mkdir build/conceal
-          mv build/src/conceald build/conceal
-          mv build/src/concealwallet build/conceal
-          mv build/src/optimizer build/conceal
-          mv build/src/walletd build/conceal
-          cp build/tests/*_tests build/conceal
+          mkdir build/syfer
+          mv build/src/syferd build/syfer
+          mv build/src/syferwallet build/syfer
+          mv build/src/optimizer build/syfer
+          mv build/src/walletd build/syfer
+          cp build/tests/*_tests build/syfer
 
       - name: Upload To GH Artifacts
         uses: actions/upload-artifact@v2
         with:
           name: ${{ steps.setup.outputs.release_name }}
-          path: build/conceal
+          path: build/syfer
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: core_tests
         run: |
-          cd build/conceal
+          cd build/syfer
           ./core_tests --generate_and_play_test_data
 
       - name: difficulty_tests
         run: |
-          cp tests/Difficulty/data.txt build/conceal
-          cd build/conceal
+          cp tests/Difficulty/data.txt build/syfer
+          cd build/syfer
           ./difficulty_tests data.txt
 
       - name: performance_tests
         run: |
-          cd build/conceal
+          cd build/syfer
           ./performance_tests
 
       - name: system_tests
         run: |
-          cd build/conceal
+          cd build/syfer
           ./system_tests
       
       - name: unit_tests
@@ -266,40 +266,40 @@ jobs:
 
       - name: Prepare release
         run: |
-          mkdir build/conceal
-          mv build/src/conceald build/conceal
-          mv build/src/concealwallet build/conceal
-          mv build/src/optimizer build/conceal
-          mv build/src/walletd build/conceal
-          cp build/tests/*_tests build/conceal
+          mkdir build/syfer
+          mv build/src/syferd build/syfer
+          mv build/src/syferwallet build/syfer
+          mv build/src/optimizer build/syfer
+          mv build/src/walletd build/syfer
+          cp build/tests/*_tests build/syfer
 
       - name: Upload To GH Artifacts
         uses: actions/upload-artifact@v2
         with:
           name: ${{ steps.setup.outputs.release_name }}
-          path: build/conceal
+          path: build/syfer
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: core_tests
         run: |
-          cd build/conceal
+          cd build/syfer
           ./core_tests --generate_and_play_test_data
 
       - name: difficulty_tests
         run: |
-          cp tests/Difficulty/data.txt build/conceal
-          cd build/conceal
+          cp tests/Difficulty/data.txt build/syfer
+          cd build/syfer
           ./difficulty_tests data.txt
 
       - name: performance_tests
         run: |
-          cd build/conceal
+          cd build/syfer
           ./performance_tests
 
       - name: system_tests
         run: |
-          cd build/conceal
+          cd build/syfer
           ./system_tests
 
       - name: unit_tests
@@ -336,40 +336,40 @@ jobs:
 
       - name: Prepare release
         run: |
-          mkdir build/conceal
-          mv build/src/conceald build/conceal
-          mv build/src/concealwallet build/conceal
-          mv build/src/optimizer build/conceal
-          mv build/src/walletd build/conceal
-          cp build/tests/*_tests build/conceal
+          mkdir build/syfer
+          mv build/src/syferd build/syfer
+          mv build/src/syferwallet build/syfer
+          mv build/src/optimizer build/syfer
+          mv build/src/walletd build/syfer
+          cp build/tests/*_tests build/syfer
 
       - name: Upload To GH Artifacts
         uses: actions/upload-artifact@v2
         with:
           name: ${{ steps.setup.outputs.release_name }}
-          path: build/conceal
+          path: build/syfer
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: core_tests
         run: |
-          cd build/conceal
+          cd build/syfer
           ./core_tests --generate_and_play_test_data
 
       - name: difficulty_tests
         run: |
-          cp tests/Difficulty/data.txt build/conceal
-          cd build/conceal
+          cp tests/Difficulty/data.txt build/syfer
+          cd build/syfer
           ./difficulty_tests data.txt
 
       - name: performance_tests
         run: |
-          cd build/conceal
+          cd build/syfer
           ./performance_tests
 
       - name: system_tests
         run: |
-          cd build/conceal
+          cd build/syfer
           ./system_tests
 
       - name: unit_tests
@@ -406,40 +406,40 @@ jobs:
 
       - name: Prepare release
         run: |
-          mkdir build/conceal
-          mv build/src/conceald build/conceal
-          mv build/src/concealwallet build/conceal
-          mv build/src/optimizer build/conceal
-          mv build/src/walletd build/conceal
-          cp build/tests/*_tests build/conceal
+          mkdir build/syfer
+          mv build/src/syferd build/syfer
+          mv build/src/syferwallet build/syfer
+          mv build/src/optimizer build/syfer
+          mv build/src/walletd build/syfer
+          cp build/tests/*_tests build/syfer
 
       - name: Upload To GH Artifacts
         uses: actions/upload-artifact@v2
         with:
           name: ${{ steps.setup.outputs.release_name }}
-          path: build/conceal
+          path: build/syfer
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: core_tests
         run: |
-          cd build/conceal
+          cd build/syfer
           ./core_tests --generate_and_play_test_data
 
       - name: difficulty_tests
         run: |
-          cp tests/Difficulty/data.txt build/conceal
-          cd build/conceal
+          cp tests/Difficulty/data.txt build/syfer
+          cd build/syfer
           ./difficulty_tests data.txt
 
       - name: performance_tests
         run: |
-          cd build/conceal
+          cd build/syfer
           ./performance_tests
 
       - name: system_tests
         run: |
-          cd build/conceal
+          cd build/syfer
           ./system_tests
 
       - name: unit_tests
@@ -475,35 +475,35 @@ jobs:
 
       - name: Prepare release
         run: |
-          mkdir build/conceal
-          mv build/src/conceald build/conceal
-          mv build/src/concealwallet build/conceal
-          mv build/src/optimizer build/conceal
-          mv build/src/walletd build/conceal
-          cp build/tests/*_tests build/conceal
+          mkdir build/syfer
+          mv build/src/syferd build/syfer
+          mv build/src/syferwallet build/syfer
+          mv build/src/optimizer build/syfer
+          mv build/src/walletd build/syfer
+          cp build/tests/*_tests build/syfer
 
       - name: Upload To GH Artifacts
         uses: actions/upload-artifact@v2
         with:
           name: ${{ steps.setup.outputs.release_name }}
-          path: build/conceal
+          path: build/syfer
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: core_tests
         run: |
-          cd build/conceal
+          cd build/syfer
           ./core_tests --generate_and_play_test_data
 
       - name: difficulty_tests
         run: |
-          cp tests/Difficulty/data.txt build/conceal
-          cd build/conceal
+          cp tests/Difficulty/data.txt build/syfer
+          cd build/syfer
           ./difficulty_tests data.txt
 
       - name: performance_tests
         run: |
-          cd build/conceal
+          cd build/syfer
           ./performance_tests
 
       - name: unit_tests

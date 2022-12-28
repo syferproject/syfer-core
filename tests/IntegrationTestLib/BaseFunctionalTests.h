@@ -1,6 +1,6 @@
 // Copyright (c) 2011-2017 The Cryptonote developers
-// Copyright (c) 2017-2018 The Circle Foundation & Conceal Devs
-// Copyright (c) 2018-2022 Conceal Network & Conceal Devs
+// Copyright (c) 2017-2018 The Circle Foundation & Syfer Devs
+// Copyright (c) 2018-2022 Syfer Network & Syfer Devs
 //
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
@@ -69,7 +69,7 @@ namespace Tests {
 
       void init(po::options_description& desc) {
         desc.add_options()
-          ("daemon-dir,d", po::value<std::string>()->default_value("."), "path to conceald.exe")
+          ("daemon-dir,d", po::value<std::string>()->default_value("."), "path to syferd.exe")
           ("data-dir,n", po::value<std::string>()->default_value("."), "path to daemon's data directory")
           ("add-daemons,a", po::value<std::vector<std::string>>()->multitoken(), "add daemon to topology");
       }

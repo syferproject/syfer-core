@@ -1,43 +1,43 @@
-![image](https://github.com/ConcealNetwork/conceal-imagery/blob/master/logos/splash.png)
+![image](https://github.com/SyferNetwork/syfer-imagery/blob/master/logos/splash.png)
 
-# Conceal Core (CLI)
+# Syfer Core (CLI)
 
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/ConcealNetwork/conceal-core)](https://github.com/ConcealNetwork/conceal-core/releases/latest)
-[![Ubuntu 20.04](https://github.com/ConcealNetwork/conceal-core/actions/workflows/ubuntu20.yml/badge.svg)](https://github.com/ConcealNetwork/conceal-core/actions/workflows/ubuntu20.yml)
-[![Ubuntu 18.04](https://github.com/ConcealNetwork/conceal-core/actions/workflows/ubuntu18.yml/badge.svg)](https://github.com/ConcealNetwork/conceal-core/actions/workflows/ubuntu18.yml)
-[![Windows](https://github.com/ConcealNetwork/conceal-core/actions/workflows/windows.yml/badge.svg)](https://github.com/ConcealNetwork/conceal-core/actions/workflows/windows.yml)
-[![macOS](https://github.com/ConcealNetwork/conceal-core/actions/workflows/macOS.yml/badge.svg)](https://github.com/ConcealNetwork/conceal-core/actions/workflows/macOS.yml)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/SyferNetwork/syfer-core)](https://github.com/SyferNetwork/syfer-core/releases/latest)
+[![Ubuntu 20.04](https://github.com/SyferNetwork/syfer-core/actions/workflows/ubuntu20.yml/badge.svg)](https://github.com/SyferNetwork/syfer-core/actions/workflows/ubuntu20.yml)
+[![Ubuntu 18.04](https://github.com/SyferNetwork/syfer-core/actions/workflows/ubuntu18.yml/badge.svg)](https://github.com/SyferNetwork/syfer-core/actions/workflows/ubuntu18.yml)
+[![Windows](https://github.com/SyferNetwork/syfer-core/actions/workflows/windows.yml/badge.svg)](https://github.com/SyferNetwork/syfer-core/actions/workflows/windows.yml)
+[![macOS](https://github.com/SyferNetwork/syfer-core/actions/workflows/macOS.yml/badge.svg)](https://github.com/SyferNetwork/syfer-core/actions/workflows/macOS.yml)
 
-Maintained by Conceal Developers, overseen by Conceal Team and driven by Conceal Community.
+Maintained by Syfer Developers, overseen by Syfer Team and driven by Syfer Community.
 
-## What's Conceal Network?
+## What's Syfer Network?
 
-Conceal Network is a peer-to-peer privacy-preserving network made for Private DeFi and Encrypted Communications. Conceal offers protocol-level private transactions, blockchain deposits, and on-chain encrypted messages. These unique functionalities make it effortless for everyday users to manage their finances and communicate securely and privately.
+Syfer Network is a peer-to-peer privacy-preserving network made for Private DeFi and Encrypted Communications. Syfer offers protocol-level private transactions, blockchain deposits, and on-chain encrypted messages. These unique functionalities make it effortless for everyday users to manage their finances and communicate securely and privately.
 
-Conceal provides the ability for individuals to communicate and financially interact with each other in a totally anonymous manner. Two persons may exchange messages, conduct business, and transact funds without ever knowing the true name, or legal identity, of the other. Interactions over networks are untraceable, via cryptographic protocols with nearly perfect assurance against any tampering.
+Syfer provides the ability for individuals to communicate and financially interact with each other in a totally anonymous manner. Two persons may exchange messages, conduct business, and transact funds without ever knowing the true name, or legal identity, of the other. Interactions over networks are untraceable, via cryptographic protocols with nearly perfect assurance against any tampering.
 
-₡CCX mimics the properties of cash. Nobody knows how or where you spend your folding cash. You go to the ATM, take out money and you can buy an ice-cream or that pretty old chair at the neighborhood yard sale and there is no record of it anywhere, unlike with a credit card. These powerful privacy-preserving abilities will act as a critical bulwark against the inevitable rise of Panopticon digital money. They may be our only hope. The end of cash means the end of free choice. That’s where Conceal comes into the picture.
+₡CCX mimics the properties of cash. Nobody knows how or where you spend your folding cash. You go to the ATM, take out money and you can buy an ice-cream or that pretty old chair at the neighborhood yard sale and there is no record of it anywhere, unlike with a credit card. These powerful privacy-preserving abilities will act as a critical bulwark against the inevitable rise of Panopticon digital money. They may be our only hope. The end of cash means the end of free choice. That’s where Syfer comes into the picture.
 
-A lot of people say there is no killer app for crypto. They’re wrong. We’ve figured out how to mimic cash in an environment that is entirely focused on privacy: The biggest feature of cash is that it’s really hard to track. In other words, anonymity is the main feature of cash. Only the two parties that conducted business know it happened. Conceal (₡CCX) is the death of blockchain analysis. Conceal brings back the true anonymity of cash.
+A lot of people say there is no killer app for crypto. They’re wrong. We’ve figured out how to mimic cash in an environment that is entirely focused on privacy: The biggest feature of cash is that it’s really hard to track. In other words, anonymity is the main feature of cash. Only the two parties that conducted business know it happened. Syfer (₡CCX) is the death of blockchain analysis. Syfer brings back the true anonymity of cash.
 
-Conceal is open-source, community driven and truly decentralized. No one owns it, everyone can take part.
+Syfer is open-source, community driven and truly decentralized. No one owns it, everyone can take part.
 
 ## Resources
 
--   Web: <https://conceal.network>
--   GitHub: <https://github.com/ConcealNetwork>
--   Wiki: <https://conceal.network/wiki>
--   Explorer: <https://explorer.conceal.network>
+-   Web: <https://syfer.network>
+-   GitHub: <https://github.com/SyferNetwork>
+-   Wiki: <https://syfer.network/wiki>
+-   Explorer: <https://explorer.syfer.network>
 -   Discord: <https://discord.gg/YbpHVSd>
--   Twitter: <https://twitter.com/ConcealNetwork>
--   Telegram Official (News Feed): <https://t.me/concealnetwork>
--   Telegram User Group (Chat Group): <https://t.me/concealnetworkusers>
--   Medium: <https://medium.com/@ConcealNetwork>
--   Reddit: <https://www.reddit.com/r/ConcealNetwork>
+-   Twitter: <https://twitter.com/SyferNetwork>
+-   Telegram Official (News Feed): <https://t.me/syfernetwork>
+-   Telegram User Group (Chat Group): <https://t.me/syfernetworkusers>
+-   Medium: <https://medium.com/@SyferNetwork>
+-   Reddit: <https://www.reddit.com/r/SyferNetwork>
 -   Bitcoin Talk: <https://bitcointalk.org/index.php?topic=4515873>
--   Paperwallet: <https://conceal.network/paperwallet>
+-   Paperwallet: <https://syfer.network/paperwallet>
 
-## Compiling Conceal from source
+## Compiling Syfer from source
 
 ### System Memory
 
@@ -71,7 +71,7 @@ sudo dphys-swapfile swapon
 
 #### Prerequisites
 
--   You will need the following dependencies to build the Conceal CLI: boost, cmake, git, gcc, g++, python, and make:
+-   You will need the following dependencies to build the Syfer CLI: boost, cmake, git, gcc, g++, python, and make:
 
 ##### Ubuntu and Debian Based Systems
 
@@ -85,8 +85,8 @@ sudo apt install -y build-essential python3-dev git cmake libboost-all-dev
 -   On Linux Systems:
 
 ```bash
-git clone https://github.com/ConcealNetwork/conceal-core
-cd conceal-core
+git clone https://github.com/SyferNetwork/syfer-core
+cd syfer-core
 mkdir build
 cd build
 cmake ..
@@ -118,12 +118,12 @@ Other ARM CPU/OS combinations should be possible if the CPU supports Neon/AES.
 -   From the start menu, open 'x64 Native Tools Command Prompt for vs2019' or run "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\Common7\\Tools\\VsMSBuildCmd.bat" from any command prompt.
 
 ```ps
-git clone https://github.com/ConcealNetwork/conceal-core
-cd conceal-core
+git clone https://github.com/SyferNetwork/syfer-core
+cd syfer-core
 mkdir build
 cd build
 cmake .. -G "Visual Studio 16 2019" -A x64 -DBOOST_ROOT="c:\local\boost_1_78_0"
-msbuild concealX.sln /p:Configuration=Release /m
+msbuild syferX.sln /p:Configuration=Release /m
 ```
 
 If the build is successful the binaries will be in the `src/Release` folder.
@@ -149,11 +149,11 @@ brew install git cmake boost
 
 #### Building
 
--   When all dependencies are installed, build Conceal Core binaries:
+-   When all dependencies are installed, build Syfer Core binaries:
 
 ```bash
-git clone https://github.com/ConcealNetwork/conceal-core
-cd conceal-core
+git clone https://github.com/SyferNetwork/syfer-core
+cd syfer-core
 mkdir build
 cd build
 cmake ..

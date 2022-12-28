@@ -1,6 +1,6 @@
 // Copyright (c) 2011-2017 The Cryptonote developers
-// Copyright (c) 2017-2018 The Circle Foundation & Conceal Devs
-// Copyright (c) 2018-2022 Conceal Network & Conceal Devs
+// Copyright (c) 2017-2018 The Circle Foundation & Syfer Devs
+// Copyright (c) 2018-2022 Syfer Network & Syfer Devs
 //
 // Copyright (c) 2016-2019, The Karbo developers
 
@@ -115,10 +115,10 @@ std::vector<uint32_t> Checkpoints::getCheckpointHeights() const {
 
 bool Checkpoints::load_checkpoints_from_dns()
 {
-  std::string domain("checkpoints.conceal.id");
+  std::string domain("checkpoints.syfer.id");
   if (m_testnet)
   {
-    domain = "testpoints.conceal.gq";
+    domain = "testpoints.syfer.gq";
   }
   std::vector<std::string>records;
 

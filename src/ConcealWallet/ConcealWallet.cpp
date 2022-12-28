@@ -1,11 +1,11 @@
 // Copyright (c) 2011-2017 The Cryptonote developers
-// Copyright (c) 2017-2018 The Circle Foundation & Conceal Devs
-// Copyright (c) 2018-2022 Conceal Network & Conceal Devs
+// Copyright (c) 2017-2018 The Circle Foundation & Syfer Devs
+// Copyright (c) 2018-2022 Syfer Network & Syfer Devs
 //
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "ConcealWallet.h"
+#include "SyferWallet.h"
 #include "TransferCmd.h"
 #include "Const.h"
 
@@ -259,7 +259,7 @@ bool processServerFeeAddressResponse(const std::string& response, std::string& f
 
 }
 
-std::string conceal_wallet::get_commands_str(bool do_ext) {
+std::string syfer_wallet::get_commands_str(bool do_ext) {
   std::stringstream ss;
   ss << "";
 
@@ -277,71 +277,71 @@ std::string conceal_wallet::get_commands_str(bool do_ext) {
   return ss.str();
 }
 
-bool conceal_wallet::help(const std::vector<std::string> &args/* = std::vector<std::string>()*/) {
+bool syfer_wallet::help(const std::vector<std::string> &args/* = std::vector<std::string>()*/) {
   success_msg_writer() << get_commands_str(false);
   return true;
 }
 
-bool conceal_wallet::extended_help(const std::vector<std::string> &args/* = std::vector<std::string>()*/) {
+bool syfer_wallet::extended_help(const std::vector<std::string> &args/* = std::vector<std::string>()*/) {
   success_msg_writer() << get_commands_str(true);
   return true;
 }
 
-bool conceal_wallet::exit(const std::vector<std::string> &args) {
+bool syfer_wallet::exit(const std::vector<std::string> &args) {
   m_consoleHandler.requestStop();
   return true;
 }
 
-conceal_wallet::conceal_wallet(platform_system::Dispatcher& dispatcher, const cn::Currency& currency, logging::LoggerManager& log) :
+syfer_wallet::syfer_wallet(platform_system::Dispatcher& dispatcher, const cn::Currency& currency, logging::LoggerManager& log) :
   m_dispatcher(dispatcher),
   m_daemon_port(0),
   m_currency(currency),
   logManager(log),
-  logger(log, "concealwallet"),
+  logger(log, "syferwallet"),
   m_refresh_progress_reporter(*this),
   m_initResultPromise(nullptr),
   m_walletSynchronized(false) {
-  m_consoleHandler.setHandler("create_integrated", boost::bind(&conceal_wallet::create_integrated, this, boost::arg<1>()), "create_integrated <payment_id> - Create an integrated address with a payment ID");
-  m_consoleHandler.setHandler("export_keys", boost::bind(&conceal_wallet::export_keys, this, boost::arg<1>()), "Show the secret keys of the current wallet");
-  m_consoleHandler.setHandler("balance", boost::bind(&conceal_wallet::show_balance, this, boost::arg<1>()), "Show current wallet balance");
-  m_consoleHandler.setHandler("sign_message", boost::bind(&conceal_wallet::sign_message, this, boost::arg<1>()), "Sign a message with your wallet keys");
-  m_consoleHandler.setHandler("verify_signature", boost::bind(&conceal_wallet::verify_signature, this, boost::arg<1>()), "Verify a signed message");
-  m_consoleHandler.setHandler("incoming_transfers", boost::bind(&conceal_wallet::show_incoming_transfers, this, boost::arg<1>()), "Show incoming transfers");
-  m_consoleHandler.setHandler("list_transfers", boost::bind(&conceal_wallet::listTransfers, this, boost::arg<1>()), "list_transfers <height> - Show all known transfers from a certain (optional) block height");
-  m_consoleHandler.setHandler("payments", boost::bind(&conceal_wallet::show_payments, this, boost::arg<1>()), "payments <payment_id_1> [<payment_id_2> ... <payment_id_N>] - Show payments <payment_id_1>, ... <payment_id_N>");
-  m_consoleHandler.setHandler("get_tx_proof", boost::bind(&conceal_wallet::get_tx_proof, this, boost::arg<1>()), "Generate a signature to prove payment: <txid> <address> [<txkey>]");
-  m_consoleHandler.setHandler("bc_height", boost::bind(&conceal_wallet::show_blockchain_height, this, boost::arg<1>()), "Show blockchain height");
-  m_consoleHandler.setHandler("show_dust", boost::bind(&conceal_wallet::show_dust, this, boost::arg<1>()), "Show the number of unmixable dust outputs");
-  m_consoleHandler.setHandler("outputs", boost::bind(&conceal_wallet::show_num_unlocked_outputs, this, boost::arg<1>()), "Show the number of unlocked outputs available for a transaction");
-  m_consoleHandler.setHandler("optimize", boost::bind(&conceal_wallet::optimize_outputs, this, boost::arg<1>()), "Combine many available outputs into a few by sending a transaction to self");
-  m_consoleHandler.setHandler("optimize_all", boost::bind(&conceal_wallet::optimize_all_outputs, this, boost::arg<1>()), "Optimize your wallet several times so you can send large transactions");  
-  m_consoleHandler.setHandler("transfer", boost::bind(&conceal_wallet::transfer, this, boost::arg<1>()),
+  m_consoleHandler.setHandler("create_integrated", boost::bind(&syfer_wallet::create_integrated, this, boost::arg<1>()), "create_integrated <payment_id> - Create an integrated address with a payment ID");
+  m_consoleHandler.setHandler("export_keys", boost::bind(&syfer_wallet::export_keys, this, boost::arg<1>()), "Show the secret keys of the current wallet");
+  m_consoleHandler.setHandler("balance", boost::bind(&syfer_wallet::show_balance, this, boost::arg<1>()), "Show current wallet balance");
+  m_consoleHandler.setHandler("sign_message", boost::bind(&syfer_wallet::sign_message, this, boost::arg<1>()), "Sign a message with your wallet keys");
+  m_consoleHandler.setHandler("verify_signature", boost::bind(&syfer_wallet::verify_signature, this, boost::arg<1>()), "Verify a signed message");
+  m_consoleHandler.setHandler("incoming_transfers", boost::bind(&syfer_wallet::show_incoming_transfers, this, boost::arg<1>()), "Show incoming transfers");
+  m_consoleHandler.setHandler("list_transfers", boost::bind(&syfer_wallet::listTransfers, this, boost::arg<1>()), "list_transfers <height> - Show all known transfers from a certain (optional) block height");
+  m_consoleHandler.setHandler("payments", boost::bind(&syfer_wallet::show_payments, this, boost::arg<1>()), "payments <payment_id_1> [<payment_id_2> ... <payment_id_N>] - Show payments <payment_id_1>, ... <payment_id_N>");
+  m_consoleHandler.setHandler("get_tx_proof", boost::bind(&syfer_wallet::get_tx_proof, this, boost::arg<1>()), "Generate a signature to prove payment: <txid> <address> [<txkey>]");
+  m_consoleHandler.setHandler("bc_height", boost::bind(&syfer_wallet::show_blockchain_height, this, boost::arg<1>()), "Show blockchain height");
+  m_consoleHandler.setHandler("show_dust", boost::bind(&syfer_wallet::show_dust, this, boost::arg<1>()), "Show the number of unmixable dust outputs");
+  m_consoleHandler.setHandler("outputs", boost::bind(&syfer_wallet::show_num_unlocked_outputs, this, boost::arg<1>()), "Show the number of unlocked outputs available for a transaction");
+  m_consoleHandler.setHandler("optimize", boost::bind(&syfer_wallet::optimize_outputs, this, boost::arg<1>()), "Combine many available outputs into a few by sending a transaction to self");
+  m_consoleHandler.setHandler("optimize_all", boost::bind(&syfer_wallet::optimize_all_outputs, this, boost::arg<1>()), "Optimize your wallet several times so you can send large transactions");  
+  m_consoleHandler.setHandler("transfer", boost::bind(&syfer_wallet::transfer, this, boost::arg<1>()),
     "transfer <addr_1> <amount_1> [<addr_2> <amount_2> ... <addr_N> <amount_N>] [-p payment_id]"
     " - Transfer <amount_1>,... <amount_N> to <address_1>,... <address_N>, respectively. ");
-  m_consoleHandler.setHandler("set_log", boost::bind(&conceal_wallet::set_log, this, boost::arg<1>()), "set_log <level> - Change current log level, <level> is a number 0-4");
-  m_consoleHandler.setHandler("address", boost::bind(&conceal_wallet::print_address, this, boost::arg<1>()), "Show current wallet public address");
-  m_consoleHandler.setHandler("save", boost::bind(&conceal_wallet::save, this, boost::arg<1>()), "Save wallet synchronized data");
-  m_consoleHandler.setHandler("reset", boost::bind(&conceal_wallet::reset, this, boost::arg<1>()), "Discard cache data and start synchronizing from the start");
-  m_consoleHandler.setHandler("help", boost::bind(&conceal_wallet::help, this, boost::arg<1>()), "Show this help");
-  m_consoleHandler.setHandler("ext_help", boost::bind(&conceal_wallet::extended_help, this, boost::arg<1>()), "Show this help");
-  m_consoleHandler.setHandler("exit", boost::bind(&conceal_wallet::exit, this, boost::arg<1>()), "Close wallet");  
-  m_consoleHandler.setHandler("balance_proof", boost::bind(&conceal_wallet::get_reserve_proof, this, boost::arg<1>()), "all|<amount> [<message>] - Generate a signature proving that you own at least <amount>, optionally with a challenge string <message>. ");
-  m_consoleHandler.setHandler("save_keys", boost::bind(&conceal_wallet::save_keys_to_file, this, boost::arg<1>()), "Saves wallet private keys to \"<wallet_name>_conceal_backup.txt\"");
-  m_consoleHandler.setHandler("list_deposits", boost::bind(&conceal_wallet::list_deposits, this, boost::arg<1>()), "Show all known deposits from this wallet");
-  m_consoleHandler.setHandler("deposit", boost::bind(&conceal_wallet::deposit, this, boost::arg<1>()), "deposit <months> <amount> - Create a deposit");
-  m_consoleHandler.setHandler("withdraw", boost::bind(&conceal_wallet::withdraw, this, boost::arg<1>()), "withdraw <id> - Withdraw a deposit");
-  m_consoleHandler.setHandler("deposit_info", boost::bind(&conceal_wallet::deposit_info, this, boost::arg<1>()), "deposit_info <id> - Get infomation for deposit <id>");
-  m_consoleHandler.setHandler("save_txs_to_file", boost::bind(&conceal_wallet::save_all_txs_to_file, this, boost::arg<1>()), "save_txs_to_file - Saves all known transactions to <wallet_name>_conceal_transactions.txt");
-  m_consoleHandler.setHandler("check_address", boost::bind(&conceal_wallet::check_address, this, boost::arg<1>()), "check_address <address> - Checks to see if given wallet is valid.");
+  m_consoleHandler.setHandler("set_log", boost::bind(&syfer_wallet::set_log, this, boost::arg<1>()), "set_log <level> - Change current log level, <level> is a number 0-4");
+  m_consoleHandler.setHandler("address", boost::bind(&syfer_wallet::print_address, this, boost::arg<1>()), "Show current wallet public address");
+  m_consoleHandler.setHandler("save", boost::bind(&syfer_wallet::save, this, boost::arg<1>()), "Save wallet synchronized data");
+  m_consoleHandler.setHandler("reset", boost::bind(&syfer_wallet::reset, this, boost::arg<1>()), "Discard cache data and start synchronizing from the start");
+  m_consoleHandler.setHandler("help", boost::bind(&syfer_wallet::help, this, boost::arg<1>()), "Show this help");
+  m_consoleHandler.setHandler("ext_help", boost::bind(&syfer_wallet::extended_help, this, boost::arg<1>()), "Show this help");
+  m_consoleHandler.setHandler("exit", boost::bind(&syfer_wallet::exit, this, boost::arg<1>()), "Close wallet");  
+  m_consoleHandler.setHandler("balance_proof", boost::bind(&syfer_wallet::get_reserve_proof, this, boost::arg<1>()), "all|<amount> [<message>] - Generate a signature proving that you own at least <amount>, optionally with a challenge string <message>. ");
+  m_consoleHandler.setHandler("save_keys", boost::bind(&syfer_wallet::save_keys_to_file, this, boost::arg<1>()), "Saves wallet private keys to \"<wallet_name>_syfer_backup.txt\"");
+  m_consoleHandler.setHandler("list_deposits", boost::bind(&syfer_wallet::list_deposits, this, boost::arg<1>()), "Show all known deposits from this wallet");
+  m_consoleHandler.setHandler("deposit", boost::bind(&syfer_wallet::deposit, this, boost::arg<1>()), "deposit <months> <amount> - Create a deposit");
+  m_consoleHandler.setHandler("withdraw", boost::bind(&syfer_wallet::withdraw, this, boost::arg<1>()), "withdraw <id> - Withdraw a deposit");
+  m_consoleHandler.setHandler("deposit_info", boost::bind(&syfer_wallet::deposit_info, this, boost::arg<1>()), "deposit_info <id> - Get infomation for deposit <id>");
+  m_consoleHandler.setHandler("save_txs_to_file", boost::bind(&syfer_wallet::save_all_txs_to_file, this, boost::arg<1>()), "save_txs_to_file - Saves all known transactions to <wallet_name>_syfer_transactions.txt");
+  m_consoleHandler.setHandler("check_address", boost::bind(&syfer_wallet::check_address, this, boost::arg<1>()), "check_address <address> - Checks to see if given wallet is valid.");
 }
 
-std::string conceal_wallet::wallet_menu(bool do_ext)
+std::string syfer_wallet::wallet_menu(bool do_ext)
 {
   std::string menu_item;
 
   if (do_ext)
   {
-    menu_item += "\t\tConceal Wallet Extended Menu\n\n";
+    menu_item += "\t\tSyfer Wallet Extended Menu\n\n";
     menu_item += "[ ] = Optional arg\n";
     menu_item += "\"balance_proof <amount>\"                           - Generate a signature proving that you own at least <amount> | [<message>]\n";
     menu_item += "\"create_integrated <payment_id>\"                   - Create an integrated address with a payment ID.\n";
@@ -351,7 +351,7 @@ std::string conceal_wallet::wallet_menu(bool do_ext)
     menu_item += "\"optimize_all\"                                     - Optimize your wallet several times so you can send large transactions.\n";
     menu_item += "\"outputs\"                                          - Show the number of unlocked outputs available for a transaction.\n";
     menu_item += "\"payments <payment_id>\"                            - Show payments from payment ID. | [<payment_id_2> ... <payment_id_N>]\n";
-    menu_item += "\"save_txs_to_file\"                                 - Saves all known transactions to <wallet_name>_conceal_transactions.txt | [false] or [true] to include deposits (default: false)\n";
+    menu_item += "\"save_txs_to_file\"                                 - Saves all known transactions to <wallet_name>_syfer_transactions.txt | [false] or [true] to include deposits (default: false)\n";
     menu_item += "\"set_log <level>\"                                  - Change current log level, default = 3, <level> is a number 0-4.\n";
     menu_item += "\"sign_message <message>\"                           - Sign a message with your wallet keys.\n";
     menu_item += "\"show_dust\"                                        - Show the number of unmixable dust outputs.\n";
@@ -359,7 +359,7 @@ std::string conceal_wallet::wallet_menu(bool do_ext)
   }
   else
   {
-    menu_item += "\t\tConceal Wallet Menu\n\n";
+    menu_item += "\t\tSyfer Wallet Menu\n\n";
     menu_item += "[ ] = Optional arg\n\n";
     menu_item += "\"help\" | \"ext_help\"           - Shows this help dialog or extended help dialog.\n\n";
     menu_item += "\"address\"                     - Shows wallet address.\n";
@@ -375,7 +375,7 @@ std::string conceal_wallet::wallet_menu(bool do_ext)
     menu_item += "\"reset\"                       - Reset cached blockchain data and starts synchronizing from block 0.\n";
     menu_item += "\"transfer <address> <amount>\" - Transfers <amount> to <address>. | [-p<payment_id>] [<amount_2>]...[<amount_N>] [<address_2>]...[<address_n>]\n";
     menu_item += "\"save\"                        - Save wallet synchronized blockchain data.\n";
-    menu_item += "\"save_keys\"                   - Saves wallet private keys to \"<wallet_name>_conceal_backup.txt\".\n";
+    menu_item += "\"save_keys\"                   - Saves wallet private keys to \"<wallet_name>_syfer_backup.txt\".\n";
     menu_item += "\"withdraw <id>\"               - Withdraw a deposit from the blockchain.\n";
   }
 
@@ -384,13 +384,13 @@ std::string conceal_wallet::wallet_menu(bool do_ext)
 
 /* This function shows the number of outputs in the wallet
   that are below the dust threshold */
-bool conceal_wallet::show_dust(const std::vector<std::string>& args) {
+bool syfer_wallet::show_dust(const std::vector<std::string>& args) {
   logger(INFO, BRIGHT_WHITE) << "Dust outputs: " << m_wallet->dustBalance() << std::endl;
 	return true;
 }
 
 //----------------------------------------------------------------------------------------------------
-bool conceal_wallet::set_log(const std::vector<std::string> &args) {
+bool syfer_wallet::set_log(const std::vector<std::string> &args) {
   if (args.size() != 1) {
     fail_msg_writer() << "use: set_log <log_level_number_0-4>";
     return true;
@@ -414,7 +414,7 @@ bool conceal_wallet::set_log(const std::vector<std::string> &args) {
 bool key_import = true;
 
 //----------------------------------------------------------------------------------------------------
-bool conceal_wallet::init(const boost::program_options::variables_map& vm) {
+bool syfer_wallet::init(const boost::program_options::variables_map& vm) {
   handle_command_line(vm);
 
   if (!m_daemon_address.empty() && (!m_daemon_host.empty() || 0 != m_daemon_port)) {
@@ -672,7 +672,7 @@ bool conceal_wallet::init(const boost::program_options::variables_map& vm) {
 }
 
 //----------------------------------------------------------------------------------------------------
-bool conceal_wallet::deinit() {
+bool syfer_wallet::deinit() {
   m_wallet->removeObserver(this);
   m_node->removeObserver(static_cast<INodeObserver*>(this));
   m_node->removeObserver(static_cast<INodeRpcProxyObserver*>(this));
@@ -683,7 +683,7 @@ bool conceal_wallet::deinit() {
   return close_wallet();
 }
 //----------------------------------------------------------------------------------------------------
-void conceal_wallet::handle_command_line(const boost::program_options::variables_map& vm) {
+void syfer_wallet::handle_command_line(const boost::program_options::variables_map& vm) {
   m_testnet = vm[arg_testnet.name].as<bool>();
   m_wallet_file_arg = command_line::get_arg(vm, arg_wallet_file);
   m_generate_new = command_line::get_arg(vm, arg_generate_new_wallet);
@@ -700,7 +700,7 @@ void conceal_wallet::handle_command_line(const boost::program_options::variables
   }
 }
 //----------------------------------------------------------------------------------------------------
-bool conceal_wallet::new_wallet(const std::string &wallet_file, const std::string& password) {
+bool syfer_wallet::new_wallet(const std::string &wallet_file, const std::string& password) {
   m_wallet_file = wallet_file;
 
   m_wallet.reset(new WalletLegacy(m_currency, *m_node, logManager, m_testnet));
@@ -725,7 +725,7 @@ bool conceal_wallet::new_wallet(const std::string &wallet_file, const std::strin
     std::string secretKeysData = std::string(reinterpret_cast<char*>(&keys.spendSecretKey), sizeof(keys.spendSecretKey)) + std::string(reinterpret_cast<char*>(&keys.viewSecretKey), sizeof(keys.viewSecretKey));
     std::string guiKeys = tools::base_58::encode_addr(cn::parameters::CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX, secretKeysData);
 
-    logger(INFO, BRIGHT_GREEN) << "ConcealWallet is an open-source, client-side, free wallet which allow you to send and receive CCX instantly on the blockchain. You are  in control of your funds & your keys. When you generate a new wallet, login, send, receive or deposit $CCX everything happens locally. Your seed is never transmitted, received or stored. That's why its imperative to write, print or save your seed somewhere safe. The backup of keys is your responsibility. If you lose your seed, your account can not be recovered. The Conceal Team doesn't take any responsibility for lost funds due to nonexistent/missing/lost private keys." << std::endl << std::endl;
+    logger(INFO, BRIGHT_GREEN) << "SyferWallet is an open-source, client-side, free wallet which allow you to send and receive CCX instantly on the blockchain. You are  in control of your funds & your keys. When you generate a new wallet, login, send, receive or deposit $CCX everything happens locally. Your seed is never transmitted, received or stored. That's why its imperative to write, print or save your seed somewhere safe. The backup of keys is your responsibility. If you lose your seed, your account can not be recovered. The Syfer Team doesn't take any responsibility for lost funds due to nonexistent/missing/lost private keys." << std::endl << std::endl;
 
     std::cout << "Wallet Address: " << m_wallet->getAddress() << std::endl;
     std::cout << "Private spend key: " << common::podToHex(keys.spendSecretKey) << std::endl;
@@ -741,14 +741,14 @@ bool conceal_wallet::new_wallet(const std::string &wallet_file, const std::strin
     "**********************************************************************\n" <<
     "Your wallet has been generated.\n" <<
     "Use \"help\" command to see the list of available commands.\n" <<
-    "Always use \"exit\" command when closing Conceal Wallet to save\n" <<
+    "Always use \"exit\" command when closing Syfer Wallet to save\n" <<
     "current session's state. Otherwise, you will possibly need to synchronize \n" <<
     "your wallet again. Your wallet key is NOT under risk anyway.\n" <<
     "**********************************************************************";
   return true;
 }
 //----------------------------------------------------------------------------------------------------
-bool conceal_wallet::new_wallet(crypto::SecretKey &secret_key, crypto::SecretKey &view_key, const std::string &wallet_file, const std::string& password) {
+bool syfer_wallet::new_wallet(crypto::SecretKey &secret_key, crypto::SecretKey &view_key, const std::string &wallet_file, const std::string& password) {
   m_wallet_file = wallet_file;
 
   m_wallet.reset(new WalletLegacy(m_currency, *m_node.get(), logManager, m_testnet));
@@ -792,7 +792,7 @@ bool conceal_wallet::new_wallet(crypto::SecretKey &secret_key, crypto::SecretKey
     "**********************************************************************\n" <<
     "Your wallet has been imported.\n" <<
     "Use \"help\" command to see the list of available commands.\n" <<
-    "Always use \"exit\" command when closing Conceal Wallet to save\n" <<
+    "Always use \"exit\" command when closing Syfer Wallet to save\n" <<
     "current session's state. Otherwise, you will possibly need to synchronize \n" <<
     "your wallet again. Your wallet key is NOT under risk anyway.\n" <<
     "**********************************************************************";
@@ -800,7 +800,7 @@ bool conceal_wallet::new_wallet(crypto::SecretKey &secret_key, crypto::SecretKey
 }
 
 //----------------------------------------------------------------------------------------------------
-bool conceal_wallet::close_wallet()
+bool syfer_wallet::close_wallet()
 {
   m_chelper.save_wallet(*m_wallet, m_wallet_file, logger);
   logger(logging::INFO, logging::BRIGHT_GREEN) << "Closing wallet...";
@@ -812,13 +812,13 @@ bool conceal_wallet::close_wallet()
 }
 
 //----------------------------------------------------------------------------------------------------
-bool conceal_wallet::save(const std::vector<std::string> &args)
+bool syfer_wallet::save(const std::vector<std::string> &args)
 {
   m_chelper.save_wallet(*m_wallet, m_wallet_file, logger);
   return true;
 }
 
-bool conceal_wallet::reset(const std::vector<std::string> &args) {
+bool syfer_wallet::reset(const std::vector<std::string> &args) {
   {
     std::unique_lock<std::mutex> lock(m_walletSynchronizedMutex);
     m_walletSynchronized = false;
@@ -837,7 +837,7 @@ bool conceal_wallet::reset(const std::vector<std::string> &args) {
   return true;
 }
 
-bool conceal_wallet::get_reserve_proof(const std::vector<std::string> &args)
+bool syfer_wallet::get_reserve_proof(const std::vector<std::string> &args)
 {
 	if (args.size() != 1 && args.size() != 2)
   {
@@ -882,7 +882,7 @@ bool conceal_wallet::get_reserve_proof(const std::vector<std::string> &args)
 }
 
 
-bool conceal_wallet::get_tx_proof(const std::vector<std::string> &args)
+bool syfer_wallet::get_tx_proof(const std::vector<std::string> &args)
 {
   if(args.size() != 2 && args.size() != 3) {
     fail_msg_writer() << "Usage: get_tx_proof <txid> <dest_address> [<txkey>]";
@@ -938,13 +938,13 @@ bool conceal_wallet::get_tx_proof(const std::vector<std::string> &args)
 }
 
 //----------------------------------------------------------------------------------------------------
-void conceal_wallet::initCompleted(std::error_code result) {
+void syfer_wallet::initCompleted(std::error_code result) {
   if (m_initResultPromise.get() != nullptr) {
     m_initResultPromise->set_value(result);
   }
 }
 //----------------------------------------------------------------------------------------------------
-void conceal_wallet::connectionStatusUpdated(bool connected) {
+void syfer_wallet::connectionStatusUpdated(bool connected) {
   if (connected) {
     logger(INFO, GREEN) << "Wallet connected to daemon.";
   } else {
@@ -952,7 +952,7 @@ void conceal_wallet::connectionStatusUpdated(bool connected) {
   }
 }
 //----------------------------------------------------------------------------------------------------
-void conceal_wallet::externalTransactionCreated(cn::TransactionId transactionId)  {
+void syfer_wallet::externalTransactionCreated(cn::TransactionId transactionId)  {
   WalletLegacyTransaction txInfo;
   m_wallet->getTransaction(transactionId, txInfo);
 
@@ -980,20 +980,20 @@ void conceal_wallet::externalTransactionCreated(cn::TransactionId transactionId)
   }
 }
 //----------------------------------------------------------------------------------------------------
-void conceal_wallet::synchronizationCompleted(std::error_code result) {
+void syfer_wallet::synchronizationCompleted(std::error_code result) {
   std::unique_lock<std::mutex> lock(m_walletSynchronizedMutex);
   m_walletSynchronized = true;
   m_walletSynchronizedCV.notify_one();
 }
 
-void conceal_wallet::synchronizationProgressUpdated(uint32_t current, uint32_t total) {
+void syfer_wallet::synchronizationProgressUpdated(uint32_t current, uint32_t total) {
   std::unique_lock<std::mutex> lock(m_walletSynchronizedMutex);
   if (!m_walletSynchronized) {
     m_refresh_progress_reporter.update(current, false);
   }
 }
 
-bool conceal_wallet::show_balance(const std::vector<std::string>& args/* = std::vector<std::string>()*/)
+bool syfer_wallet::show_balance(const std::vector<std::string>& args/* = std::vector<std::string>()*/)
 {
   if (!args.empty())
   {
@@ -1007,7 +1007,7 @@ bool conceal_wallet::show_balance(const std::vector<std::string>& args/* = std::
   return true;
 }
 
-bool conceal_wallet::sign_message(const std::vector<std::string>& args)
+bool syfer_wallet::sign_message(const std::vector<std::string>& args)
 {
   if(args.size() < 1)
   {
@@ -1028,7 +1028,7 @@ bool conceal_wallet::sign_message(const std::vector<std::string>& args)
   return true;	
 }
 
-bool conceal_wallet::verify_signature(const std::vector<std::string>& args)
+bool syfer_wallet::verify_signature(const std::vector<std::string>& args)
 {
   if (args.size() != 3)
   {
@@ -1069,7 +1069,7 @@ bool conceal_wallet::verify_signature(const std::vector<std::string>& args)
 /* CREATE INTEGRATED ADDRESS */
 /* take a payment Id as an argument and generate an integrated wallet address */
 
-bool conceal_wallet::create_integrated(const std::vector<std::string>& args/* = std::vector<std::string>()*/) 
+bool syfer_wallet::create_integrated(const std::vector<std::string>& args/* = std::vector<std::string>()*/) 
 {
 
   /* check if there is a payment id */
@@ -1116,14 +1116,14 @@ bool conceal_wallet::create_integrated(const std::vector<std::string>& args/* = 
 /* ---------------------------------------------------------------------------------------- */
 
 
-bool conceal_wallet::export_keys(const std::vector<std::string>& args/* = std::vector<std::string>()*/) {
+bool syfer_wallet::export_keys(const std::vector<std::string>& args/* = std::vector<std::string>()*/) {
   AccountKeys keys;
   m_wallet->getAccountKeys(keys);
 
   std::string secretKeysData = std::string(reinterpret_cast<char*>(&keys.spendSecretKey), sizeof(keys.spendSecretKey)) + std::string(reinterpret_cast<char*>(&keys.viewSecretKey), sizeof(keys.viewSecretKey));
   std::string guiKeys = tools::base_58::encode_addr(cn::parameters::CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX, secretKeysData);
 
-  logger(INFO, BRIGHT_GREEN) << std::endl << "ConcealWallet is an open-source, client-side, free wallet which allow you to send and receive CCX instantly on the blockchain. You are  in control of your funds & your keys. When you generate a new wallet, login, send, receive or deposit $CCX everything happens locally. Your seed is never transmitted, received or stored. That's why its imperative to write, print or save your seed somewhere safe. The backup of keys is your responsibility. If you lose your seed, your account can not be recovered. The Conceal Team doesn't take any responsibility for lost funds due to nonexistent/missing/lost private keys." << std::endl << std::endl;
+  logger(INFO, BRIGHT_GREEN) << std::endl << "SyferWallet is an open-source, client-side, free wallet which allow you to send and receive CCX instantly on the blockchain. You are  in control of your funds & your keys. When you generate a new wallet, login, send, receive or deposit $CCX everything happens locally. Your seed is never transmitted, received or stored. That's why its imperative to write, print or save your seed somewhere safe. The backup of keys is your responsibility. If you lose your seed, your account can not be recovered. The Syfer Team doesn't take any responsibility for lost funds due to nonexistent/missing/lost private keys." << std::endl << std::endl;
 
   std::cout << "Private spend key: " << common::podToHex(keys.spendSecretKey) << std::endl;
   std::cout << "Private view key: " <<  common::podToHex(keys.viewSecretKey) << std::endl;
@@ -1143,7 +1143,7 @@ bool conceal_wallet::export_keys(const std::vector<std::string>& args/* = std::v
   return true;
 }
 //----------------------------------------------------------------------------------------------------
-bool conceal_wallet::show_incoming_transfers(const std::vector<std::string>& args) {
+bool syfer_wallet::show_incoming_transfers(const std::vector<std::string>& args) {
   bool hasTransfers = false;
   size_t transactionsCount = m_wallet->getTransactionCount();
   for (size_t trantransactionNumber = 0; trantransactionNumber < transactionsCount; ++trantransactionNumber) {
@@ -1160,7 +1160,7 @@ bool conceal_wallet::show_incoming_transfers(const std::vector<std::string>& arg
   return true;
 }
 
-bool conceal_wallet::listTransfers(const std::vector<std::string>& args) {
+bool syfer_wallet::listTransfers(const std::vector<std::string>& args) {
   bool haveTransfers = false;
   bool haveBlockHeight = false;
   std::string blockHeightString = ""; 
@@ -1210,7 +1210,7 @@ bool conceal_wallet::listTransfers(const std::vector<std::string>& args) {
   return true;
 }
 
-bool conceal_wallet::show_payments(const std::vector<std::string> &args) {
+bool syfer_wallet::show_payments(const std::vector<std::string> &args) {
   if (args.empty()) {
     fail_msg_writer() << "expected at least one payment ID";
     return true;
@@ -1257,7 +1257,7 @@ bool conceal_wallet::show_payments(const std::vector<std::string> &args) {
   return true;
 }
 //----------------------------------------------------------------------------------------------------
-bool conceal_wallet::show_blockchain_height(const std::vector<std::string>& args) {
+bool syfer_wallet::show_blockchain_height(const std::vector<std::string>& args) {
   try {
     uint64_t bc_height = m_node->getLastLocalBlockHeight();
     success_msg_writer() << bc_height;
@@ -1268,7 +1268,7 @@ bool conceal_wallet::show_blockchain_height(const std::vector<std::string>& args
   return true;
 }
 //----------------------------------------------------------------------------------------------------
-bool conceal_wallet::show_num_unlocked_outputs(const std::vector<std::string>& args) {
+bool syfer_wallet::show_num_unlocked_outputs(const std::vector<std::string>& args) {
   try {
     std::vector<TransactionOutputInformation> unlocked_outputs = m_wallet->getUnspentOutputs();
     success_msg_writer() << "Count: " << unlocked_outputs.size();
@@ -1282,7 +1282,7 @@ bool conceal_wallet::show_num_unlocked_outputs(const std::vector<std::string>& a
   return true;
 }
 //----------------------------------------------------------------------------------------------------
-bool conceal_wallet::optimize_outputs(const std::vector<std::string>& args) {
+bool syfer_wallet::optimize_outputs(const std::vector<std::string>& args) {
   try {
     cn::WalletHelper::SendCompleteResultObserver sent;
     WalletHelper::IWalletRemoveObserverGuard removeGuard(*m_wallet, sent);
@@ -1329,7 +1329,7 @@ bool conceal_wallet::optimize_outputs(const std::vector<std::string>& args) {
 //----------------------------------------------------------------------------------------------------
 
 
-bool conceal_wallet::optimize_all_outputs(const std::vector<std::string>& args) {
+bool syfer_wallet::optimize_all_outputs(const std::vector<std::string>& args) {
 
   uint64_t num_unlocked_outputs = 0;
 
@@ -1390,7 +1390,7 @@ bool conceal_wallet::optimize_all_outputs(const std::vector<std::string>& args) 
 
 //----------------------------------------------------------------------------------------------------
 
-std::string conceal_wallet::resolveAlias(const std::string& aliasUrl)
+std::string syfer_wallet::resolveAlias(const std::string& aliasUrl)
 {
   std::string host;
   std::string uri;
@@ -1420,7 +1420,7 @@ std::string conceal_wallet::resolveAlias(const std::string& aliasUrl)
 //----------------------------------------------------------------------------------------------------
 
 /* This extracts the fee address from the remote node */
-std::string conceal_wallet::getFeeAddress() {
+std::string syfer_wallet::getFeeAddress() {
   
   HttpClient httpClient(m_dispatcher, m_daemon_host, m_daemon_port);
 
@@ -1448,7 +1448,7 @@ std::string conceal_wallet::getFeeAddress() {
 }
 
 
-bool conceal_wallet::transfer(const std::vector<std::string> &args) {
+bool syfer_wallet::transfer(const std::vector<std::string> &args) {
   try {
     transfer_cmd cmd(m_currency, m_remote_node_address);
 
@@ -1546,7 +1546,7 @@ bool conceal_wallet::transfer(const std::vector<std::string> &args) {
   return true;
 }
 //----------------------------------------------------------------------------------------------------
-bool conceal_wallet::run() {
+bool syfer_wallet::run() {
   {
     std::unique_lock<std::mutex> lock(m_walletSynchronizedMutex);
     while (!m_walletSynchronized) {
@@ -1561,24 +1561,24 @@ bool conceal_wallet::run() {
   return true;
 }
 //----------------------------------------------------------------------------------------------------
-void conceal_wallet::stop() {
+void syfer_wallet::stop() {
   m_consoleHandler.requestStop();
 }
 //----------------------------------------------------------------------------------------------------
-bool conceal_wallet::print_address(const std::vector<std::string> &args/* = std::vector<std::string>()*/) {
+bool syfer_wallet::print_address(const std::vector<std::string> &args/* = std::vector<std::string>()*/) {
   success_msg_writer() << m_wallet->getAddress();
   return true;
 }
 //----------------------------------------------------------------------------------------------------
-bool conceal_wallet::process_command(const std::vector<std::string> &args) {
+bool syfer_wallet::process_command(const std::vector<std::string> &args) {
   return m_consoleHandler.runCommand(args);
 }
 
-void conceal_wallet::printConnectionError() const {
+void syfer_wallet::printConnectionError() const {
   fail_msg_writer() << "wallet failed to connect to daemon (" << m_daemon_address << ").";
 }
 
-bool conceal_wallet::save_keys_to_file(const std::vector<std::string>& args)
+bool syfer_wallet::save_keys_to_file(const std::vector<std::string>& args)
 {
   if (!args.empty())
   {
@@ -1586,13 +1586,13 @@ bool conceal_wallet::save_keys_to_file(const std::vector<std::string>& args)
     return true;
   }
 
-  std::string formatted_wal_str = m_frmt_wallet_file + "_conceal_backup.txt";
+  std::string formatted_wal_str = m_frmt_wallet_file + "_syfer_backup.txt";
   std::ofstream backup_file(formatted_wal_str);
 
   AccountKeys keys;
   m_wallet->getAccountKeys(keys);
 
-  std::string priv_key = "\t\tConceal Keys Backup\n\n";
+  std::string priv_key = "\t\tSyfer Keys Backup\n\n";
   priv_key += "Wallet file name: " + m_wallet_file + "\n";
   priv_key += "Private spend key: " + common::podToHex(keys.spendSecretKey) + "\n";
   priv_key += "Private view key: " +  common::podToHex(keys.viewSecretKey) + "\n";
@@ -1610,13 +1610,13 @@ bool conceal_wallet::save_keys_to_file(const std::vector<std::string>& args)
 
   backup_file << priv_key;
 
-  logger(INFO, BRIGHT_GREEN) << "Wallet keys have been saved to the current folder where \"concealwallet\" is located as \""
+  logger(INFO, BRIGHT_GREEN) << "Wallet keys have been saved to the current folder where \"syferwallet\" is located as \""
     << formatted_wal_str << ".";
 
   return true;
 }
 
-bool conceal_wallet::save_all_txs_to_file(const std::vector<std::string> &args)
+bool syfer_wallet::save_all_txs_to_file(const std::vector<std::string> &args)
 {
   /* check args, default: include_deposits = false */
   bool include_deposits;
@@ -1650,7 +1650,7 @@ bool conceal_wallet::save_all_txs_to_file(const std::vector<std::string> &args)
   logger(INFO) << "Preparing file and transactions...";
 
   /* create filename and file */
-  std::string formatted_wal_str = m_frmt_wallet_file + "_conceal_transactions.txt";
+  std::string formatted_wal_str = m_frmt_wallet_file + "_syfer_transactions.txt";
   std::ofstream tx_file(formatted_wal_str);
 
   /* create header for listed txs */
@@ -1696,7 +1696,7 @@ bool conceal_wallet::save_all_txs_to_file(const std::vector<std::string> &args)
   }
 
   /* tell user job complete */
-  logger(INFO, BRIGHT_GREEN) << "All transactions have been saved to the current folder where \"concealwallet\" is located as \""
+  logger(INFO, BRIGHT_GREEN) << "All transactions have been saved to the current folder where \"syferwallet\" is located as \""
     << formatted_wal_str << "\".";
   
   /* if user uses "save_txs_to_file true" then we go through the deposits */
@@ -1753,14 +1753,14 @@ bool conceal_wallet::save_all_txs_to_file(const std::vector<std::string> &args)
     }
 
     /* tell user job complete */
-    logger(INFO, BRIGHT_GREEN) << "All deposits have been saved to the end of the file current folder where \"concealwallet\" is located as \""
+    logger(INFO, BRIGHT_GREEN) << "All deposits have been saved to the end of the file current folder where \"syferwallet\" is located as \""
       << formatted_wal_str << "\".";
   }
 
   return true;
 }
 
-bool conceal_wallet::list_deposits(const std::vector<std::string> &args)
+bool syfer_wallet::list_deposits(const std::vector<std::string> &args)
 {
   bool haveDeposits = m_wallet->getDepositCount() > 0;
 
@@ -1786,7 +1786,7 @@ bool conceal_wallet::list_deposits(const std::vector<std::string> &args)
   return true;
 }
 
-bool conceal_wallet::deposit(const std::vector<std::string> &args)
+bool syfer_wallet::deposit(const std::vector<std::string> &args)
 {
   if (args.size() != 2)
   {
@@ -1889,7 +1889,7 @@ bool conceal_wallet::deposit(const std::vector<std::string> &args)
   return true;
 }
 
-bool conceal_wallet::withdraw(const std::vector<std::string> &args)
+bool syfer_wallet::withdraw(const std::vector<std::string> &args)
 {
   if (args.size() != 1)
   {
@@ -1942,7 +1942,7 @@ bool conceal_wallet::withdraw(const std::vector<std::string> &args)
   return true;
 }
 
-bool conceal_wallet::deposit_info(const std::vector<std::string> &args)
+bool syfer_wallet::deposit_info(const std::vector<std::string> &args)
 {
   if (args.size() != 1)
   {
@@ -1965,7 +1965,7 @@ bool conceal_wallet::deposit_info(const std::vector<std::string> &args)
   return true;
 }
 
-bool conceal_wallet::check_address(const std::vector<std::string> &args)
+bool syfer_wallet::check_address(const std::vector<std::string> &args)
 {
   if (args.size() != 1) 
   {
