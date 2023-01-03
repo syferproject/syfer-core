@@ -19,7 +19,7 @@ namespace cn
 		const uint64_t CRYPTONOTE_MAX_BLOCK_NUMBER = 500000000;
 		const size_t CRYPTONOTE_MAX_BLOCK_BLOB_SIZE = 500000000;
 		const size_t CRYPTONOTE_MAX_TX_SIZE = 1000000000;
-		const uint64_t CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX = 0x7ad4; /* ccx7 address prefix */
+		const uint64_t CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX = 0x3119; /* Sf address prefix */
 		const size_t CRYPTONOTE_MINED_MONEY_UNLOCK_WINDOW = 10;			 /* 20 minutes */
 		const uint64_t CRYPTONOTE_BLOCK_FUTURE_TIME_LIMIT = 60 * 60 * 2; /* two hours */
 		const uint64_t CRYPTONOTE_BLOCK_FUTURE_TIME_LIMIT_V1 = 360;		 /* changed for LWMA3 */
@@ -28,7 +28,7 @@ namespace cn
 		const size_t BLOCKCHAIN_TIMESTAMP_CHECK_WINDOW = 30;
 		const size_t BLOCKCHAIN_TIMESTAMP_CHECK_WINDOW_V1 = 11; /* changed for LWMA3 */
 
-		const uint64_t MONEY_SUPPLY = UINT64_C(200000000000000); /* max supply: 200M (Consensus II) */
+		const uint64_t MONEY_SUPPLY = UINT64_C(250000000000000); /* max supply: 250M (Consensus II) */
 
 		const uint32_t ZAWY_DIFFICULTY_BLOCK_INDEX = 0;
 		const size_t ZAWY_DIFFICULTY_FIX = 1;
@@ -105,12 +105,12 @@ namespace cn
 
 		const uint64_t UPGRADE_HEIGHT = 1;
 		const uint64_t UPGRADE_HEIGHT_V2 = 1;
-		const uint64_t UPGRADE_HEIGHT_V3 = 12750;	  /* Cryptonight-Fast */
-		const uint64_t UPGRADE_HEIGHT_V4 = 45000;	  /* MixIn 2 */
-		const uint64_t UPGRADE_HEIGHT_V5 = 98160;	  /* Deposits 2.0, Investments 1.0 */
-		const uint64_t UPGRADE_HEIGHT_V6 = 104200;	  /* LWMA3 */
-		const uint64_t UPGRADE_HEIGHT_V7 = 195765;	  /* Cryptoight Syfer */
-		const uint64_t UPGRADE_HEIGHT_V8 = 661300;	  /* LWMA1, CN-GPU, Halving */
+		const uint64_t UPGRADE_HEIGHT_V3 = 10;	  /* Cryptonight-Fast */
+		const uint64_t UPGRADE_HEIGHT_V4 = 15;	  /* MixIn 2 */
+		const uint64_t UPGRADE_HEIGHT_V5 = 20;	  /* Deposits 2.0, Investments 1.0 */
+		const uint64_t UPGRADE_HEIGHT_V6 = 25;	  /* LWMA3 */
+		const uint64_t UPGRADE_HEIGHT_V7 = 30;	  /* Cryptoight Syfer */
+		const uint64_t UPGRADE_HEIGHT_V8 = 40;	  /* LWMA1, CN-GPU, Halving */
 		const unsigned UPGRADE_VOTING_THRESHOLD = 90; // percent
 		const size_t UPGRADE_VOTING_WINDOW = EXPECTED_NUMBER_OF_BLOCKS_PER_DAY;
 		const size_t UPGRADE_WINDOW = EXPECTED_NUMBER_OF_BLOCKS_PER_DAY;
@@ -145,7 +145,7 @@ namespace cn
 	} // namespace parameters
 
 	const uint64_t START_BLOCK_REWARD = (UINT64_C(5000) * parameters::POINT);  // start reward (Consensus I)
-	const uint64_t FOUNDATION_TRUST = (UINT64_C(12000000) * parameters::COIN); // locked funds to secure network  (Consensus II)
+	const uint64_t FOUNDATION_TRUST = (UINT64_C(100000000) * parameters::COIN); // locked funds to secure network  (Consensus II)
 	const uint64_t MAX_BLOCK_REWARD = (UINT64_C(15) * parameters::COIN);	   // max reward (Consensus I)
 	const uint64_t MAX_BLOCK_REWARD_V1 = (UINT64_C(6) * parameters::COIN);
 	const uint64_t REWARD_INCREASE_INTERVAL = (UINT64_C(21900));			   // aprox. 1 month (+ 0.25 CCX increment per month)
