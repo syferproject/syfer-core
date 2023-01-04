@@ -1,7 +1,7 @@
 // Copyright (c) 2011-2017 The Cryptonote developers
 // Copyright (c) 2016-2022, The Karbo developers
-// Copyright (c) 2017-2018 The Circle Foundation & Syfer Devs
-// Copyright (c) 2018-2022 Syfer Network & Syfer Devs
+// Copyright (c) 2017-2018 The Circle Foundation 
+// Copyright (c) 2018-2022 Conceal Network Copyright (c) 2023 Syfer Network 
 //
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
@@ -135,14 +135,14 @@ int main(int argc, char* argv[])
       // logger is not configured yet, std::cout is fine here
       if (command_line::get_arg(vm, command_line::arg_help))
       {
-        std::cout << CCX_RELEASE_VERSION << std::endl
+        std::cout << SYFR_RELEASE_VERSION << std::endl
                   << std::endl;
         std::cout << desc_options;
         return false;
       }
       else if (command_line::get_arg(vm, command_line::arg_version))
       {
-        std::cout << CCX_RELEASE_VERSION << std::endl;
+        std::cout << SYFR_RELEASE_VERSION << std::endl;
         return false;
       }
       else if (command_line::get_arg(vm, arg_os_version))
@@ -199,7 +199,7 @@ int main(int argc, char* argv[])
     // configure logging
     logManager.configure(buildLoggerConfiguration(cfgLogLevel, cfgLogFile));
 
-    logger(INFO, BRIGHT_YELLOW) << CCX_RELEASE_VERSION;
+    logger(INFO, BRIGHT_YELLOW) << SYFR_RELEASE_VERSION;
 
     logger(INFO) << "Module folder: " << argv[0];
 

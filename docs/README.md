@@ -6,7 +6,7 @@ Syfer.Network is based on the Cryptonote protocol. For more information please c
 
 === Decentralized Banking ===
 
-Syfer.Network is an open source private cryptocurrency (a peer-to-peer digital cash system). Deposits form the backbone of the Syfer.Network ecosystem, providing users with an egalitarian framework to Cold Stake ₡CCX, the native coin of Syfer.Network. Cold Staking is a timed deposit you earn compounding interest on when the locked deposit matures. Users privately choose the length of the staking period and the amount of ₡CCX to be staked. 
+Syfer.Network is an open source private cryptocurrency (a peer-to-peer digital cash system). Deposits form the backbone of the Syfer.Network ecosystem, providing users with an egalitarian framework to Cold Stake ₡SYFR, the native coin of Syfer.Network. Cold Staking is a timed deposit you earn compounding interest on when the locked deposit matures. Users privately choose the length of the staking period and the amount of ₡SYFR to be staked. 
 
 === Private Transactions ===
 

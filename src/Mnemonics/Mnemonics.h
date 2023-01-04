@@ -1,5 +1,5 @@
 // Copyright 2014-2018 The Monero Developers
-// Copyright (c) 2018-2022 Syfer Network & Syfer Devs
+// Copyright (c) 2018-2022 Conceal Network Copyright (c) 2023 Syfer Network 
 //
 // Please see the included LICENSE file for more information.
 

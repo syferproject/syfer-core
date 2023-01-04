@@ -1,4 +1,4 @@
-// Copyright (c) 2018-2022 Syfer Network & Syfer Devs
+// Copyright (c) 2018-2022 Conceal Network Copyright (c) 2023 Syfer Network 
 //
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
@@ -68,14 +68,14 @@ int main(int argc, char* argv[])
 
     if (command_line::get_arg(vm, command_line::arg_help))
     {
-      std::cout << CCX_WALLET_RELEASE_VERSION << std::endl;
+      std::cout << SYFR_WALLET_RELEASE_VERSION << std::endl;
       std::cout << desc_all << std::endl;
 
       return false;
     }
     else if (command_line::get_arg(vm, command_line::arg_version))
     {
-      std::cout << CCX_WALLET_RELEASE_VERSION << std::endl;
+      std::cout << SYFR_WALLET_RELEASE_VERSION << std::endl;
       return false;
     }
 
@@ -96,7 +96,7 @@ int main(int argc, char* argv[])
 
   logManager.configure(m_chelper.buildLoggerConfiguration(logLevel, common::ReplaceExtenstion(argv[0], ".log")));
 
-  logger(INFO, BRIGHT_YELLOW) << CCX_WALLET_RELEASE_VERSION;
+  logger(INFO, BRIGHT_YELLOW) << SYFR_WALLET_RELEASE_VERSION;
 
   bool testnet = command_line::get_arg(vm, arg_testnet);
   if (testnet)

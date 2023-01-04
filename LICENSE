@@ -1,7 +1,8 @@
 MIT License
 
-Copyright (c) 2017-2018 The Circle Foundation & Syfer Devs
-Copyright (c) 2018-2021 Syfer Network & Syfer Devs
+Copyright (c) 2017-2018 The Circle Foundation 
+Copyright (c) 2018-2021 Conceal Network and Conceal Devs
+Copyright (c) 2023 Syfer Network & Syfer Devs
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

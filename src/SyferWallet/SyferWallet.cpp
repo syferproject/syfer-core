@@ -1,6 +1,6 @@
 // Copyright (c) 2011-2017 The Cryptonote developers
-// Copyright (c) 2017-2018 The Circle Foundation & Syfer Devs
-// Copyright (c) 2018-2022 Syfer Network & Syfer Devs
+// Copyright (c) 2017-2018 The Circle Foundation 
+// Copyright (c) 2018-2022 Conceal Network Copyright (c) 2023 Syfer Network 
 //
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
@@ -725,7 +725,7 @@ bool syfer_wallet::new_wallet(const std::string &wallet_file, const std::string&
     std::string secretKeysData = std::string(reinterpret_cast<char*>(&keys.spendSecretKey), sizeof(keys.spendSecretKey)) + std::string(reinterpret_cast<char*>(&keys.viewSecretKey), sizeof(keys.viewSecretKey));
     std::string guiKeys = tools::base_58::encode_addr(cn::parameters::CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX, secretKeysData);
 
-    logger(INFO, BRIGHT_GREEN) << "SyferWallet is an open-source, client-side, free wallet which allow you to send and receive CCX instantly on the blockchain. You are  in control of your funds & your keys. When you generate a new wallet, login, send, receive or deposit $CCX everything happens locally. Your seed is never transmitted, received or stored. That's why its imperative to write, print or save your seed somewhere safe. The backup of keys is your responsibility. If you lose your seed, your account can not be recovered. The Syfer Team doesn't take any responsibility for lost funds due to nonexistent/missing/lost private keys." << std::endl << std::endl;
+    logger(INFO, BRIGHT_GREEN) << "SyferWallet is an open-source, client-side, free wallet which allow you to send and receive SYFR instantly on the blockchain. You are  in control of your funds & your keys. When you generate a new wallet, login, send, receive or deposit $SYFR everything happens locally. Your seed is never transmitted, received or stored. That's why its imperative to write, print or save your seed somewhere safe. The backup of keys is your responsibility. If you lose your seed, your account can not be recovered. The Syfer Team doesn't take any responsibility for lost funds due to nonexistent/missing/lost private keys." << std::endl << std::endl;
 
     std::cout << "Wallet Address: " << m_wallet->getAddress() << std::endl;
     std::cout << "Private spend key: " << common::podToHex(keys.spendSecretKey) << std::endl;
@@ -860,7 +860,7 @@ bool syfer_wallet::get_reserve_proof(const std::vector<std::string> &args)
 		
 		//logger(INFO, BRIGHT_WHITE) << "\n\n" << sig_str << "\n\n" << std::endl;
 
-		const std::string filename = "balance_proof_" + args[0] + "_CCX.txt";
+		const std::string filename = "balance_proof_" + args[0] + "_SYFR.txt";
 		boost::system::error_code ec;
 		if (boost::filesystem::exists(filename, ec)) {
 			boost::filesystem::remove(filename, ec);
@@ -1123,7 +1123,7 @@ bool syfer_wallet::export_keys(const std::vector<std::string>& args/* = std::vec
   std::string secretKeysData = std::string(reinterpret_cast<char*>(&keys.spendSecretKey), sizeof(keys.spendSecretKey)) + std::string(reinterpret_cast<char*>(&keys.viewSecretKey), sizeof(keys.viewSecretKey));
   std::string guiKeys = tools::base_58::encode_addr(cn::parameters::CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX, secretKeysData);
 
-  logger(INFO, BRIGHT_GREEN) << std::endl << "SyferWallet is an open-source, client-side, free wallet which allow you to send and receive CCX instantly on the blockchain. You are  in control of your funds & your keys. When you generate a new wallet, login, send, receive or deposit $CCX everything happens locally. Your seed is never transmitted, received or stored. That's why its imperative to write, print or save your seed somewhere safe. The backup of keys is your responsibility. If you lose your seed, your account can not be recovered. The Syfer Team doesn't take any responsibility for lost funds due to nonexistent/missing/lost private keys." << std::endl << std::endl;
+  logger(INFO, BRIGHT_GREEN) << std::endl << "SyferWallet is an open-source, client-side, free wallet which allow you to send and receive SYFR instantly on the blockchain. You are  in control of your funds & your keys. When you generate a new wallet, login, send, receive or deposit $SYFR everything happens locally. Your seed is never transmitted, received or stored. That's why its imperative to write, print or save your seed somewhere safe. The backup of keys is your responsibility. If you lose your seed, your account can not be recovered. The Syfer Team doesn't take any responsibility for lost funds due to nonexistent/missing/lost private keys." << std::endl << std::endl;
 
   std::cout << "Private spend key: " << common::podToHex(keys.spendSecretKey) << std::endl;
   std::cout << "Private view key: " <<  common::podToHex(keys.viewSecretKey) << std::endl;

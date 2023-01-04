@@ -1,6 +1,6 @@
 // Copyright (c) 2011-2017 The Cryptonote developers
-// Copyright (c) 2017-2018 The Circle Foundation & Syfer Devs
-// Copyright (c) 2018-2022 Syfer Network & Syfer Devs
+// Copyright (c) 2017-2018 The Circle Foundation 
+// Copyright (c) 2018-2022 Conceal Network Copyright (c) 2023 Syfer Network 
 //
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
@@ -1723,7 +1723,7 @@ namespace payment_service
           return make_error_code(cn::error::DEPOSIT_TERM_TOO_BIG);
         }
 
-        /* The minimum deposit amount is 1 CCX */
+        /* The minimum deposit amount is 1 SYFR */
         if (amount < currency.depositMinAmount())
         {
           return make_error_code(cn::error::DEPOSIT_AMOUNT_TOO_SMALL);
