@@ -105,12 +105,12 @@ namespace cn
 
 		const uint64_t UPGRADE_HEIGHT = 1;
 		const uint64_t UPGRADE_HEIGHT_V2 = 1;
-		const uint64_t UPGRADE_HEIGHT_V3 = 10;	  /* Cryptonight-Fast */
-		const uint64_t UPGRADE_HEIGHT_V4 = 15;	  /* MixIn 2 */
-		const uint64_t UPGRADE_HEIGHT_V5 = 20;	  /* Deposits 2.0, Investments 1.0 */
-		const uint64_t UPGRADE_HEIGHT_V6 = 25;	  /* LWMA3 */
-		const uint64_t UPGRADE_HEIGHT_V7 = 30;	  /* Cryptoight Syfer */
-		const uint64_t UPGRADE_HEIGHT_V8 = 40;	  /* LWMA1, CN-GPU, Halving */
+		const uint64_t UPGRADE_HEIGHT_V3 = 2;	  /* Cryptonight-Fast */
+		const uint64_t UPGRADE_HEIGHT_V4 = 3;	  /* MixIn 2 */
+		const uint64_t UPGRADE_HEIGHT_V5 = 4;	  /* Deposits 2.0, Investments 1.0 */
+		const uint64_t UPGRADE_HEIGHT_V6 = 5;	  /* LWMA3 */
+		const uint64_t UPGRADE_HEIGHT_V7 = 6;	  /* Cryptoight Syfer */
+		const uint64_t UPGRADE_HEIGHT_V8 = 10;	  /* LWMA3, CN-GPU, Halving */
 		const unsigned UPGRADE_VOTING_THRESHOLD = 90; // percent
 		const size_t UPGRADE_VOTING_WINDOW = EXPECTED_NUMBER_OF_BLOCKS_PER_DAY;
 		const size_t UPGRADE_WINDOW = EXPECTED_NUMBER_OF_BLOCKS_PER_DAY;

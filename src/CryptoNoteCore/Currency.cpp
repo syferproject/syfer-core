@@ -889,10 +889,10 @@ namespace cn
   {
 
     // manual diff set hack
-    //if (blockIndex >= 12750 && blockIndex < 13500)
-    //{
-    //  return 2160;
-    //}
+    if (blockIndex >= 1 && blockIndex < 10)
+    {
+      return 100;
+    }
 
     std::vector<uint64_t> timestamps_o(timestamps);
     std::vector<uint64_t> cumulativeDifficulties_o(cumulativeDifficulties);
@@ -1162,9 +1162,10 @@ namespace cn
       std::vector<difficulty_type> cumulative_difficulties,
       uint64_t height) const
   {
+
     uint64_t T = 120;
     uint64_t N = 60;
-    uint64_t difficulty_guess = m_testnet ? 10 : 7200000;
+    uint64_t difficulty_guess = m_testnet ? 10 : 3600;
 
     // Genesis should be the only time sizes are < N+1.
     assert(timestamps.size() == cumulative_difficulties.size() && timestamps.size() <= N + 1);
