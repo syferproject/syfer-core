@@ -72,10 +72,10 @@ namespace cn
 		const uint32_t DEPOSIT_MAX_TERM_V1 = 64800 * 20;	 /* five years */
 		const uint32_t DEPOSIT_MIN_TERM_V3 = 21900;			 /* consensus 2019 - one month */
 		const uint32_t DEPOSIT_MAX_TERM_V3 = 1 * 12 * 21900; /* consensus 2019 - one year */
-		const uint32_t DEPOSIT_HEIGHT_V3 = 30;			 /* consensus 2019 - deposts v3.0 */
+		const uint32_t DEPOSIT_HEIGHT_V3 = 2;			 /* consensus 2019 - deposts v3.0 */
 		const uint64_t DEPOSIT_MIN_TOTAL_RATE_FACTOR = 0;	 /* constant rate */
 		const uint64_t DEPOSIT_MAX_TOTAL_RATE = 4;			 /* legacy deposits */
-		const uint32_t DEPOSIT_HEIGHT_V4 = 40;			 /* enforce deposit terms */
+		const uint32_t DEPOSIT_HEIGHT_V4 = 10;			 /* enforce deposit terms */
 		const uint32_t BLOCK_WITH_MISSING_INTEREST = 0; /*  */
 
 		static_assert(DEPOSIT_MIN_TERM > 0, "Bad DEPOSIT_MIN_TERM");
