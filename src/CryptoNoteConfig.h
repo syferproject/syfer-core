@@ -20,7 +20,7 @@ namespace cn
 		const size_t CRYPTONOTE_MAX_BLOCK_BLOB_SIZE = 500000000;
 		const size_t CRYPTONOTE_MAX_TX_SIZE = 1000000000;
 		const uint64_t CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX = 0x3119; /* Sf address prefix */
-		const size_t CRYPTONOTE_MINED_MONEY_UNLOCK_WINDOW = 60;			 /* 20 minutes */
+		const size_t CRYPTONOTE_MINED_MONEY_UNLOCK_WINDOW = 10;			 /* 20 minutes */
 		const uint64_t CRYPTONOTE_BLOCK_FUTURE_TIME_LIMIT = 60 * 60 * 2; /* two hours */
 		const uint64_t CRYPTONOTE_BLOCK_FUTURE_TIME_LIMIT_V1 = 360;		 /* changed for LWMA3 */
 		const uint64_t CRYPTONOTE_DEFAULT_TX_SPENDABLE_AGE = 10;		 /* 20 minutes */
@@ -151,7 +151,7 @@ namespace cn
 	const uint64_t REWARD_INCREASE_INTERVAL = (UINT64_C(21900));			   // aprox. 1 month (+ 0.25 SYFR increment per month)
 
 	const char BLOCKCHAIN_DIR[] = "syfer";
-	const char GENESIS_COINBASE_TX_HEX[] = "013c01ff0001ffffffffff7f029b2e4c0281c0b02e7c53291a94d1d0cbff8883f8024f5142ee494ffbbd0880712101a4c7f45361853c33ca078aa72308ed66d62c121e36e278294c7695ad4650e85b";
+	const char GENESIS_COINBASE_TX_HEX[] = "010a01ff0001c096b102029b2e4c0281c0b02e7c53291a94d1d0cbff8883f8024f5142ee494ffbbd08807121017d6775185749e95ac2d70cae3f29e0e46f430ab648abbe9fdc61d8e7437c60f8";
 	const uint32_t GENESIS_NONCE = 7000;
 	const uint64_t GENESIS_TIMESTAMP = 1673183142;
 
