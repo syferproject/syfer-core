@@ -889,10 +889,10 @@ namespace cn
   {
 
     // manual diff set hack
-    if (blockIndex >= 12750 && blockIndex < 13500)
-    {
-      return 2160;
-    }
+    //if (blockIndex >= 12750 && blockIndex < 13500)
+    //{
+    //  return 2160;
+    //}
 
     std::vector<uint64_t> timestamps_o(timestamps);
     std::vector<uint64_t> cumulativeDifficulties_o(cumulativeDifficulties);
