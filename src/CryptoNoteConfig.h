@@ -72,10 +72,10 @@ namespace cn
 		const uint32_t DEPOSIT_MAX_TERM_V1 = 64800 * 20;	 /* five years */
 		const uint32_t DEPOSIT_MIN_TERM_V3 = 21900;			 /* consensus 2019 - one month */
 		const uint32_t DEPOSIT_MAX_TERM_V3 = 1 * 12 * 21900; /* consensus 2019 - one year */
-		const uint32_t DEPOSIT_HEIGHT_V3 = 2;			 /* consensus 2019 - deposts v3.0 */
+		const uint32_t DEPOSIT_HEIGHT_V3 = 580;			 /* consensus 2019 - deposts v3.0 */
 		const uint64_t DEPOSIT_MIN_TOTAL_RATE_FACTOR = 0;	 /* constant rate */
 		const uint64_t DEPOSIT_MAX_TOTAL_RATE = 4;			 /* legacy deposits */
-		const uint32_t DEPOSIT_HEIGHT_V4 = 10;			 /* enforce deposit terms */
+		const uint32_t DEPOSIT_HEIGHT_V4 = 610;			 /* enforce deposit terms */
 		const uint32_t BLOCK_WITH_MISSING_INTEREST = 0; /*  */
 
 		static_assert(DEPOSIT_MIN_TERM > 0, "Bad DEPOSIT_MIN_TERM");
@@ -83,7 +83,7 @@ namespace cn
 		static_assert(DEPOSIT_MIN_TERM * DEPOSIT_MAX_TOTAL_RATE > DEPOSIT_MIN_TOTAL_RATE_FACTOR, "Bad DEPOSIT_MIN_TOTAL_RATE_FACTOR or DEPOSIT_MAX_TOTAL_RATE");
 
 		const uint64_t MULTIPLIER_FACTOR = 100;		 /* legacy deposits */
-		const uint32_t END_MULTIPLIER_BLOCK = 40; /* legacy deposits */
+		const uint32_t END_MULTIPLIER_BLOCK = 101; /* legacy deposits */
 
 		const size_t MAX_BLOCK_SIZE_INITIAL = CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE * 10;
 		const uint64_t MAX_BLOCK_SIZE_GROWTH_SPEED_NUMERATOR = 100 * 1024;
@@ -105,12 +105,12 @@ namespace cn
 
 		const uint64_t UPGRADE_HEIGHT = 1;
 		const uint64_t UPGRADE_HEIGHT_V2 = 1;
-		const uint64_t UPGRADE_HEIGHT_V3 = 2;	  /* Cryptonight-Fast */
-		const uint64_t UPGRADE_HEIGHT_V4 = 3;	  /* MixIn 2 */
-		const uint64_t UPGRADE_HEIGHT_V5 = 4;	  /* Deposits 2.0, Investments 1.0 */
-		const uint64_t UPGRADE_HEIGHT_V6 = 5;	  /* LWMA3 */
-		const uint64_t UPGRADE_HEIGHT_V7 = 6;	  /* Cryptoight Syfer */
-		const uint64_t UPGRADE_HEIGHT_V8 = 10;	  /* LWMA3, CN-GPU, Halving */
+        const uint64_t UPGRADE_HEIGHT_V3 = 101;	  /* Cryptonight-Fast */
+		const uint64_t UPGRADE_HEIGHT_V4 = 201;	  /* MixIn 2 */
+		const uint64_t UPGRADE_HEIGHT_V5 = 301;	  /* Deposits 2.0, Investments 1.0 */
+		const uint64_t UPGRADE_HEIGHT_V6 = 401;	  /* LWMA3 */
+		const uint64_t UPGRADE_HEIGHT_V7 = 501;	  /* Cryptoight Syfer */
+		const uint64_t UPGRADE_HEIGHT_V8 = 601;	  /* CN-GPU, Halving */
 		const unsigned UPGRADE_VOTING_THRESHOLD = 90; // percent
 		const size_t UPGRADE_VOTING_WINDOW = EXPECTED_NUMBER_OF_BLOCKS_PER_DAY;
 		const size_t UPGRADE_WINDOW = EXPECTED_NUMBER_OF_BLOCKS_PER_DAY;
@@ -145,7 +145,7 @@ namespace cn
 	} // namespace parameters
 
 	const uint64_t START_BLOCK_REWARD = (UINT64_C(5000) * parameters::POINT);  // start reward (Consensus I)
-	const uint64_t FOUNDATION_TRUST = (UINT64_C(100000000) * parameters::COIN); // locked funds to secure network  (Consensus II)
+	const uint64_t FOUNDATION_TRUST = (UINT64_C(1000000) * parameters::COIN); // locked funds to secure network  (Consensus II)
 	const uint64_t MAX_BLOCK_REWARD = (UINT64_C(15) * parameters::COIN);	   // max reward (Consensus I)
 	const uint64_t MAX_BLOCK_REWARD_V1 = (UINT64_C(6) * parameters::COIN);
 	const uint64_t REWARD_INCREASE_INTERVAL = (UINT64_C(21900));			   // aprox. 1 month (+ 0.25 SYFR increment per month)

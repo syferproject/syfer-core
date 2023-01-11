@@ -164,7 +164,7 @@ namespace cn
 
   uint64_t Currency::baseRewardFunction(uint64_t alreadyGeneratedCoins, uint32_t height) const
   {
-    if (height == 1)
+    if (height >= 1 && height < 101)
     {
       return FOUNDATION_TRUST;
     }
@@ -889,10 +889,10 @@ namespace cn
   {
 
     // manual diff set hack
-    if (blockIndex >= 1 && blockIndex < 10)
-    {
-      return 100;
-    }
+    //if (blockIndex >= 1 && blockIndex < 15)
+    //{
+    //  return 100;
+    //}
 
     std::vector<uint64_t> timestamps_o(timestamps);
     std::vector<uint64_t> cumulativeDifficulties_o(cumulativeDifficulties);
