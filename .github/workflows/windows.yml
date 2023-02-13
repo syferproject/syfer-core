@@ -51,7 +51,7 @@ jobs:
         uses: softprops/action-gh-release@v0.1.15
         with:
           files: ${{ steps.build.outputs.asset_path }}
-          name: Conceal Core CLI v${{ steps.build.outputs.ccx_version }}
+          name: Syfer Core CLI v${{ steps.build.outputs.ccx_version }}
           body: |
             [Download for Windows](../../releases/download/${{ steps.build.outputs.ccx_version }}/${{ steps.build.outputs.release_name }}) **${{ steps.build.outputs.release_name }}**
             `SHA256 : ${{ steps.build.outputs.sha256 }}`
