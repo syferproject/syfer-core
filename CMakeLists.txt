@@ -1,10 +1,10 @@
 cmake_minimum_required(VERSION 3.0)
 
 include(CheckCXXCompilerFlag)
-set(VERSION "6.7.0")
-set(VERSION_BUILD_NO "Trebopala")
+set(VERSION "10.0.0")
+set(VERSION_BUILD_NO "Syfer")
 # Packaged from main commits
-set(COMMIT 1db6e66)
+set(COMMIT 1e3e242)
 set(REFS " (HEAD -> master)")
 
 set(CMAKE_CXX_STANDARD 11)
