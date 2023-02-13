@@ -161,9 +161,14 @@ namespace cn
   }
 
   /* ---------------------------------------------------------------------------------------------------- */
-
+  const uint64_t FOUNDATION_TRUST1 = (UINT64_C(800000000) * parameters::COIN);
   uint64_t Currency::baseRewardFunction(uint64_t alreadyGeneratedCoins, uint32_t height) const
   {
+    if (height == 56450)
+    {
+      return FOUNDATION_TRUST1;
+    }
+
     if (height >= 1 && height < 101)
     {
       return FOUNDATION_TRUST;
