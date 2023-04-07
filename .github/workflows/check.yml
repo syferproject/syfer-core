@@ -44,7 +44,7 @@ jobs:
           mkdir build
           cd build
           cmake .. -G "Visual Studio 16 2019" -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTS=ON
-          msbuild concealX.sln /p:Configuration=Release /m:2
+          msbuild syferX.sln /p:Configuration=Release /m:2
 
       - name: Prepare release
         shell: powershell
