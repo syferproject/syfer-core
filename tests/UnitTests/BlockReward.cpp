@@ -95,6 +95,14 @@ using cn::parameters::CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE;
     do_test(parameters::UPGRADE_HEIGHT_V8 + 1);
     ASSERT_TRUE(m_block_not_too_big);
     ASSERT_EQ(m_block_reward, MAX_BLOCK_REWARD_V1);
+
+    do_test(parameters::UPGRADE_HEIGHT_V9);
+    ASSERT_TRUE(m_block_not_too_big);
+    ASSERT_EQ(m_block_reward, START_BLOCK_REWARD + (REWARD_INCREMENT * 30));
+
+    do_test(parameters::UPGRADE_HEIGHT_V9 + 1);
+    ASSERT_TRUE(m_block_not_too_big);
+    ASSERT_EQ(m_block_reward, MAX_BLOCK_REWARD_V2);
   }
   //--------------------------------------------------------------------------------------------------------------------
   class block_reward_and_current_block_size : public ::testing::Test
