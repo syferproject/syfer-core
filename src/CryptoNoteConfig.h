@@ -111,6 +111,7 @@ namespace cn
 		const uint64_t UPGRADE_HEIGHT_V6 = 401;	  /* LWMA3 */
 		const uint64_t UPGRADE_HEIGHT_V7 = 501;	  /* Cryptoight Syfer */
 		const uint64_t UPGRADE_HEIGHT_V8 = 601;	  /* CN-GPU, Halving */
+		const uint64_t UPGRADE_HEIGHT_V9 = 6000;	  /* SWAP */
 		const unsigned UPGRADE_VOTING_THRESHOLD = 90; // percent
 		const size_t UPGRADE_VOTING_WINDOW = EXPECTED_NUMBER_OF_BLOCKS_PER_DAY;
 		const size_t UPGRADE_WINDOW = EXPECTED_NUMBER_OF_BLOCKS_PER_DAY;
@@ -124,6 +125,7 @@ namespace cn
 		const uint64_t TESTNET_UPGRADE_HEIGHT_V6 = 48;	  /* LWMA3 */
 		const uint64_t TESTNET_UPGRADE_HEIGHT_V7 = 60;	  /* Cryptoight Syfer */
 		const uint64_t TESTNET_UPGRADE_HEIGHT_V8 = 72;	  /* LWMA1, CN-GPU, Halving */
+		const uint64_t TESTNET_UPGRADE_HEIGHT_V9 = 100;	  /* SWAP */
 
 		const uint32_t TESTNET_DEPOSIT_MIN_TERM_V3 = 30;		/* testnet deposits 1 month -> 1 hour */
 		const uint32_t TESTNET_DEPOSIT_MAX_TERM_V3 = 12 * 30;	/* testnet deposits 1 year -> 12 hour */
@@ -148,12 +150,15 @@ namespace cn
 	const uint64_t FOUNDATION_TRUST = (UINT64_C(1000000) * parameters::COIN); // locked funds to secure network  (Consensus II)
 	const uint64_t MAX_BLOCK_REWARD = (UINT64_C(15) * parameters::COIN);	   // max reward (Consensus I)
 	const uint64_t MAX_BLOCK_REWARD_V1 = (UINT64_C(6) * parameters::COIN);
+	const uint64_t MAX_BLOCK_REWARD_V2 = (UINT64_C(12) * parameters::COIN);
 	const uint64_t REWARD_INCREASE_INTERVAL = (UINT64_C(21900));			   // aprox. 1 month (+ 0.25 SYFR increment per month)
 
 	const char BLOCKCHAIN_DIR[] = "syfer";
 	const char GENESIS_COINBASE_TX_HEX[] = "010a01ff0001c096b102029b2e4c0281c0b02e7c53291a94d1d0cbff8883f8024f5142ee494ffbbd08807121017d6775185749e95ac2d70cae3f29e0e46f430ab648abbe9fdc61d8e7437c60f8";
 	const uint32_t GENESIS_NONCE = 7000;
 	const uint64_t GENESIS_TIMESTAMP = 1673183142;
+
+	const uint64_t TESTNET_GENESIS_TIMESTAMP = 1632048808;
 
 	const uint8_t TRANSACTION_VERSION_1 = 1;
 	const uint8_t TRANSACTION_VERSION_2 = 2;
@@ -163,6 +168,7 @@ namespace cn
 	const uint8_t BLOCK_MAJOR_VERSION_4 = 4; // LWMA3
 	const uint8_t BLOCK_MAJOR_VERSION_7 = 7; /* Cryptonight Syfer */
 	const uint8_t BLOCK_MAJOR_VERSION_8 = 8; /* LWMA1, CN-GPU, Halving */
+	const uint8_t BLOCK_MAJOR_VERSION_9 = 9; /* SWAP */
 	const uint8_t BLOCK_MINOR_VERSION_0 = 0;
 	const uint8_t BLOCK_MINOR_VERSION_1 = 1;
 

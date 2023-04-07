@@ -170,8 +170,11 @@ namespace cn
     }
 
     uint64_t base_reward = 0;
-
-    if (height > m_upgradeHeightV8)
+    if (height > m_upgradeHeightV9) 
+    {
+      base_reward = cn::MAX_BLOCK_REWARD_V2;
+    }
+    else if (height > m_upgradeHeightV8)
     {
       base_reward = cn::MAX_BLOCK_REWARD_V1;
     }
@@ -211,6 +214,10 @@ namespace cn
     else if (majorVersion == BLOCK_MAJOR_VERSION_8)
     {
       return m_upgradeHeightV8;
+    }
+    else if (majorVersion == BLOCK_MAJOR_VERSION_9)
+    {
+      return m_upgradeHeightV9;
     }
     else
     {
@@ -1301,6 +1308,15 @@ namespace cn
     return true;
   }
 
+  uint64_t Currency::getGenesisTimestamp() const
+  {
+    if (m_testnet)
+    {
+      return TESTNET_GENESIS_TIMESTAMP;
+    }
+    return GENESIS_TIMESTAMP;
+  }
+
   /* ---------------------------------------------------------------------------------------------------- */
 
   CurrencyBuilder::CurrencyBuilder(logging::ILogger &log) : m_currency(log)
@@ -1370,6 +1386,7 @@ namespace cn
     upgradeHeightV6(parameters::UPGRADE_HEIGHT_V6);
     upgradeHeightV7(parameters::UPGRADE_HEIGHT_V7);
     upgradeHeightV8(parameters::UPGRADE_HEIGHT_V8);
+    upgradeHeightV9(parameters::UPGRADE_HEIGHT_V9);
     upgradeVotingThreshold(parameters::UPGRADE_VOTING_THRESHOLD);
     upgradeVotingWindow(parameters::UPGRADE_VOTING_WINDOW);
     upgradeWindow(parameters::UPGRADE_WINDOW);

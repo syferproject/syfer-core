@@ -196,6 +196,8 @@ namespace cn
 
     bool validateOutput(uint64_t amount, const MultisignatureOutput &output, uint32_t height) const;
 
+    uint64_t getGenesisTimestamp() const;
+
   private:
     explicit Currency(logging::ILogger &log) : logger(log, "currency")
     {
@@ -273,6 +275,7 @@ namespace cn
     uint64_t m_upgradeHeightV6;
     uint64_t m_upgradeHeightV7;
     uint64_t m_upgradeHeightV8;
+    uint64_t m_upgradeHeightV9;
 
     unsigned int m_upgradeVotingThreshold;
     uint32_t m_upgradeVotingWindow;
@@ -577,6 +580,11 @@ namespace cn
       m_currency.m_upgradeHeightV8 = val;
       return *this;
     }
+    CurrencyBuilder &upgradeHeightV9(uint64_t val)
+    {
+      m_currency.m_upgradeHeightV9 = val;
+      return *this;
+    }
 
     CurrencyBuilder &upgradeVotingThreshold(unsigned int val);
     CurrencyBuilder &upgradeVotingWindow(uint32_t val)
@@ -658,6 +666,7 @@ namespace cn
         upgradeHeightV6(parameters::TESTNET_UPGRADE_HEIGHT_V6);
         upgradeHeightV7(parameters::TESTNET_UPGRADE_HEIGHT_V7);
         upgradeHeightV8(parameters::TESTNET_UPGRADE_HEIGHT_V8);
+        upgradeHeightV9(parameters::TESTNET_UPGRADE_HEIGHT_V9);
       }
       return *this;
     }

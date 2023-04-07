@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.0)
 
 include(CheckCXXCompilerFlag)
-set(VERSION "10.0.0")
-set(VERSION_BUILD_NO "Syfer")
+set(VERSION "11.0.0")
+set(VERSION_BUILD_NO "Soteria")
 # Packaged from main commits
 set(COMMIT 1e3e242)
 set(REFS " (HEAD -> master)")
