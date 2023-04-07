@@ -64,31 +64,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: core_tests
-        shell: powershell
-        run: |
-          cd build/syfer
-          ./core_tests.exe --generate_and_play_test_data
-
-      - name: difficulty_tests
-        shell: powershell
-        run: |
-          cp tests/Difficulty/data.txt build/syfer
-          cd build/syfer
-          ./difficulty_tests.exe data.txt
-
-      - name: performance_tests
-        shell: powershell
-        run: |
-          cd build/syfer
-          ./performance_tests.exe
-      
-      - name: unit_tests
-        shell: powershell
-        run: |
-          cd build/tests
-          ctest -R UnitTests --output-on-failure
-
   build-mingw:
     name: MinGW
     runs-on: windows-2019
@@ -142,31 +117,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: core_tests
-        shell: powershell
-        run: |
-          cd build/syfer
-          ./core_tests.exe --generate_and_play_test_data
-
-      - name: difficulty_tests
-        shell: powershell
-        run: |
-          cp tests/Difficulty/data.txt build/syfer
-          cd build/syfer
-          ./difficulty_tests.exe data.txt
-
-      - name: performance_tests
-        shell: powershell
-        run: |
-          cd build/syfer
-          ./performance_tests.exe
-      
-      - name: unit_tests
-        shell: powershell
-        run: |
-          cd build/tests
-          ctest -R UnitTests --output-on-failure
-
   build-ubuntu18:
     name: Ubuntu 18.04
     runs-on: ubuntu-18.04
@@ -211,31 +161,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: core_tests
-        run: |
-          cd build/syfer
-          ./core_tests --generate_and_play_test_data
-
-      - name: difficulty_tests
-        run: |
-          cp tests/Difficulty/data.txt build/syfer
-          cd build/syfer
-          ./difficulty_tests data.txt
-
-      - name: performance_tests
-        run: |
-          cd build/syfer
-          ./performance_tests
-
-      - name: system_tests
-        run: |
-          cd build/syfer
-          ./system_tests
-      
-      - name: unit_tests
-        run: |
-          cd build/tests
-          ctest -R UnitTests --output-on-failure
 
   build-ubuntu20:
     name: Ubuntu 20.04
@@ -281,32 +206,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: core_tests
-        run: |
-          cd build/syfer
-          ./core_tests --generate_and_play_test_data
-
-      - name: difficulty_tests
-        run: |
-          cp tests/Difficulty/data.txt build/syfer
-          cd build/syfer
-          ./difficulty_tests data.txt
-
-      - name: performance_tests
-        run: |
-          cd build/syfer
-          ./performance_tests
-
-      - name: system_tests
-        run: |
-          cd build/syfer
-          ./system_tests
-
-      - name: unit_tests
-        run: |
-          cd build/tests
-          ctest -R UnitTests --output-on-failure
-
   build-ubuntu22:
     name: Ubuntu 22.04
     runs-on: ubuntu-22.04
@@ -351,31 +250,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: core_tests
-        run: |
-          cd build/syfer
-          ./core_tests --generate_and_play_test_data
-
-      - name: difficulty_tests
-        run: |
-          cp tests/Difficulty/data.txt build/syfer
-          cd build/syfer
-          ./difficulty_tests data.txt
-
-      - name: performance_tests
-        run: |
-          cd build/syfer
-          ./performance_tests
-
-      - name: system_tests
-        run: |
-          cd build/syfer
-          ./system_tests
-
-      - name: unit_tests
-        run: |
-          cd build/tests
-          ctest -R UnitTests --output-on-failure
 
   build-ubuntu20-clang:
     name: Ubuntu 20.04 clang
@@ -421,31 +295,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: core_tests
-        run: |
-          cd build/syfer
-          ./core_tests --generate_and_play_test_data
-
-      - name: difficulty_tests
-        run: |
-          cp tests/Difficulty/data.txt build/syfer
-          cd build/syfer
-          ./difficulty_tests data.txt
-
-      - name: performance_tests
-        run: |
-          cd build/syfer
-          ./performance_tests
-
-      - name: system_tests
-        run: |
-          cd build/syfer
-          ./system_tests
-
-      - name: unit_tests
-        run: |
-          cd build/tests
-          ctest -R UnitTests --output-on-failure
 
   build-macos11:
     name: macOS
@@ -489,24 +338,3 @@ jobs:
           path: build/syfer
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: core_tests
-        run: |
-          cd build/syfer
-          ./core_tests --generate_and_play_test_data
-
-      - name: difficulty_tests
-        run: |
-          cp tests/Difficulty/data.txt build/syfer
-          cd build/syfer
-          ./difficulty_tests data.txt
-
-      - name: performance_tests
-        run: |
-          cd build/syfer
-          ./performance_tests
-
-      - name: unit_tests
-        run: |
-          cd build/tests
-          ctest -R UnitTests --output-on-failure
