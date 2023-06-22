@@ -1,10 +1,10 @@
 cmake_minimum_required(VERSION 3.0)
 
 include(CheckCXXCompilerFlag)
-set(VERSION "11.0.0")
-set(VERSION_BUILD_NO "Soteria")
+set(VERSION "12.0.0")
+set(VERSION_BUILD_NO "Sento")
 # Packaged from main commits
-set(COMMIT 1e3e242)
+set(COMMIT bc56541)
 set(REFS " (HEAD -> master)")
 
 set(CMAKE_CXX_STANDARD 11)

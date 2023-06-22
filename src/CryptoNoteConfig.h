@@ -238,8 +238,9 @@ namespace cn
 	// {<block height>, "<block hash>"},
 	const std::initializer_list<CheckpointData>
 		CHECKPOINTS = {
-		//	{0, "b9dc432e56e37b52771970ce014dd23fda517cfd4fc5a9b296f1954b7d4505de"},
-		//	{10000, "55cf271a5c97785fb35fea7ed177cb75f47c18688bd86fc01ae66508878029d6"}
+		{0, "6b15db6b4d419de4d9df06f9e14e0a8548cf058dc8594794ac1141cc615f3bd1"},
+			{10000, "7a210e2af485b2865706087d2a6750b46116bffacb94d99c8948f6762fe85267"},
+			{50000, "152a8fe265fc0e769aad8e3d5d7a09a8ec0c5e4061eea01372addada979991c8"}
 	};
 
     const std::initializer_list<CheckpointData> TESTNET_CHECKPOINTS = {
