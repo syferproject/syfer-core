@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.0)
 
 include(CheckCXXCompilerFlag)
-set(VERSION "12.0.0")
+set(VERSION "12.0.1")
 set(VERSION_BUILD_NO "Sento")
 # Packaged from main commits
 set(COMMIT bc56541)
