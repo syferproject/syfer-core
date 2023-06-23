@@ -1074,7 +1074,8 @@ namespace cn
   // https://github.com/graft-project/GraftNetwork/pull/118/files
 
   // difficulty_type should be uint64_t
-  difficulty_type Currency::nextDifficultyLWMA3(std::vector<std::uint64_t> timestamps, std::vector<difficulty_type> cumulative_difficulties) const
+  difficulty_type Currency::nextDifficultyLWMA3(std::vector<std::uint64_t> timestamps, std::vector<difficulty_type> cumulative_difficulties,
+      uint64_t height) const
   {
 
     uint64_t T = 120; // target solvetime seconds
@@ -1085,6 +1086,12 @@ namespace cn
     uint64_t prev_D;
     uint64_t this_timestamp;
     uint64_t previous_timestamp;
+
+    if (height == 56630)
+    {
+      uint64_t difficulty_guess = 100;
+      return difficulty_guess;
+    }
 
     // Make sure timestamps & CD vectors are not bigger than they are supposed to be.
     // assert(timestamps.size() == cumulative_difficulties.size() &&

@@ -187,7 +187,7 @@ namespace cn
 
     difficulty_type nextDifficulty(std::vector<uint64_t> timestamps, std::vector<difficulty_type> cumulativeDifficulties) const;
     difficulty_type nextDifficulty(uint8_t version, uint32_t blockIndex, std::vector<uint64_t> timestamps, std::vector<difficulty_type> cumulativeDifficulties) const;
-    difficulty_type nextDifficultyLWMA3(std::vector<uint64_t> timestamps, std::vector<difficulty_type> cumulativeDifficulties) const;
+    difficulty_type nextDifficultyLWMA3(std::vector<uint64_t> timestamps, std::vector<difficulty_type> cumulativeDifficulties, uint64_t height) const;
     difficulty_type nextDifficultyLWMA1(std::vector<uint64_t> timestamps, std::vector<difficulty_type> cumulativeDifficulties, uint64_t height) const;
 
     bool checkProofOfWork(crypto::cn_context &context, const Block &block, difficulty_type currentDifficulty, crypto::Hash &proofOfWork) const;

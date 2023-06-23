@@ -904,7 +904,7 @@ namespace cn
 
     if (block_major_version >= 4)
     {
-      return m_currency.nextDifficultyLWMA3(timestamps, commulative_difficulties);
+      return m_currency.nextDifficultyLWMA3(timestamps, commulative_difficulties, block_index);
     }
     else
     {
@@ -1231,7 +1231,7 @@ namespace cn
     }
     else if (block_major_version >= 4)
     {
-      return m_currency.nextDifficultyLWMA3(timestamps, commulative_difficulties);
+      return m_currency.nextDifficultyLWMA3(timestamps, commulative_difficulties, block_index);
     }
     else
     {
