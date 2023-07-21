@@ -352,6 +352,7 @@ namespace cn
     m_upgradeDetectorV4(currency, m_blocks, BLOCK_MAJOR_VERSION_4, logger),
     m_upgradeDetectorV7(currency, m_blocks, BLOCK_MAJOR_VERSION_7, logger),
     m_upgradeDetectorV8(currency, m_blocks, BLOCK_MAJOR_VERSION_8, logger),
+    m_upgradeDetectorV10(currency, m_blocks, BLOCK_MAJOR_VERSION_10, logger),
     m_blockchainIndexesEnabled(blockchainIndexesEnabled),
     m_blockchainAutosaveEnabled(blockchainAutosaveEnabled),
     logger(logger, "Blockchain")
@@ -570,6 +571,12 @@ namespace cn
     }
 
     if (!m_upgradeDetectorV8.init())
+    {
+      logger(ERROR, BRIGHT_RED) << "Failed to initialize upgrade detector";
+      return false;
+    }
+
+    if (!m_upgradeDetectorV10.init())
     {
       logger(ERROR, BRIGHT_RED) << "Failed to initialize upgrade detector";
       return false;
@@ -901,8 +908,11 @@ namespace cn
 
     uint64_t block_index = m_blocks.size();
     uint8_t block_major_version = get_block_major_version_for_height(block_index + 1);
-
-    if (block_major_version >= 4)
+    if (block_major_version >= 10)
+    {
+      return m_currency.nextDifficultyLWMA3(timestamps, commulative_difficulties, block_index);
+    }
+    else if (block_major_version >= 4)
     {
       return m_currency.nextDifficultyLWMA3(timestamps, commulative_difficulties, block_index);
     }
@@ -953,7 +963,11 @@ namespace cn
 
   uint8_t Blockchain::get_block_major_version_for_height(uint64_t height) const
   {
-    if (height > m_upgradeDetectorV8.upgradeHeight())
+    if (height > m_upgradeDetectorV10.upgradeHeight())
+    {
+      return m_upgradeDetectorV10.targetVersion();
+    }
+    else if (height > m_upgradeDetectorV8.upgradeHeight())
     {
       return m_upgradeDetectorV8.targetVersion();
     }
@@ -1138,7 +1152,11 @@ namespace cn
 
   uint8_t Blockchain::getBlockMajorVersionForHeight(uint32_t height) const
   {
-    if (height > m_upgradeDetectorV8.upgradeHeight())
+    if (height > m_upgradeDetectorV10.upgradeHeight())
+    {
+      return m_upgradeDetectorV10.targetVersion();
+    }
+    else if (height > m_upgradeDetectorV8.upgradeHeight())
     {
       return m_upgradeDetectorV8.targetVersion();
     }
@@ -1224,8 +1242,11 @@ namespace cn
 
     uint64_t block_index = m_blocks.size();
     uint8_t block_major_version = get_block_major_version_for_height(block_index + 1);
-
-    if (block_major_version >= 8)
+    if (block_major_version >= 10)
+    {
+      return m_currency.nextDifficultyLWMA3(timestamps, commulative_difficulties, block_index);
+    }
+    else if (block_major_version >= 8)
     {
       return m_currency.nextDifficultyLWMA1(timestamps, commulative_difficulties, block_index);
     }
@@ -2610,6 +2631,7 @@ namespace cn
     m_upgradeDetectorV4.blockPushed();
     m_upgradeDetectorV7.blockPushed();
     m_upgradeDetectorV8.blockPushed();
+    m_upgradeDetectorV10.blockPushed();
     update_next_comulative_size_limit();
 
     return true;
@@ -2713,6 +2735,7 @@ namespace cn
     m_upgradeDetectorV4.blockPopped();
     m_upgradeDetectorV7.blockPopped();
     m_upgradeDetectorV8.blockPopped();
+    m_upgradeDetectorV10.blockPopped();
   }
 
   bool Blockchain::pushTransaction(BlockEntry &block, const crypto::Hash &transactionHash, TransactionIndex transactionIndex)

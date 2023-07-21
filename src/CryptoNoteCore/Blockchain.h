@@ -305,6 +305,7 @@ namespace cn
     UpgradeDetector m_upgradeDetectorV4;
     UpgradeDetector m_upgradeDetectorV7;
     UpgradeDetector m_upgradeDetectorV8;
+    UpgradeDetector m_upgradeDetectorV10;
 
     bool m_blockchainIndexesEnabled;
     bool m_blockchainAutosaveEnabled;

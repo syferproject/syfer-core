@@ -112,6 +112,7 @@ namespace cn
 		const uint64_t UPGRADE_HEIGHT_V7 = 501;	  /* Cryptoight Syfer */
 		const uint64_t UPGRADE_HEIGHT_V8 = 601;	  /* CN-GPU, Halving */
 		const uint64_t UPGRADE_HEIGHT_V9 = 6000;	  /* SWAP */
+		const uint64_t UPGRADE_HEIGHT_V10 = 59000;	  /* ZAWY */
 		const unsigned UPGRADE_VOTING_THRESHOLD = 90; // percent
 		const size_t UPGRADE_VOTING_WINDOW = EXPECTED_NUMBER_OF_BLOCKS_PER_DAY;
 		const size_t UPGRADE_WINDOW = EXPECTED_NUMBER_OF_BLOCKS_PER_DAY;
@@ -126,6 +127,7 @@ namespace cn
 		const uint64_t TESTNET_UPGRADE_HEIGHT_V7 = 60;	  /* Cryptoight Syfer */
 		const uint64_t TESTNET_UPGRADE_HEIGHT_V8 = 72;	  /* LWMA1, CN-GPU, Halving */
 		const uint64_t TESTNET_UPGRADE_HEIGHT_V9 = 100;	  /* SWAP */
+		const uint64_t TESTNET_UPGRADE_HEIGHT_V10 = 110;	  /* ZAWY */
 
 		const uint32_t TESTNET_DEPOSIT_MIN_TERM_V3 = 30;		/* testnet deposits 1 month -> 1 hour */
 		const uint32_t TESTNET_DEPOSIT_MAX_TERM_V3 = 12 * 30;	/* testnet deposits 1 year -> 12 hour */
@@ -169,6 +171,7 @@ namespace cn
 	const uint8_t BLOCK_MAJOR_VERSION_7 = 7; /* Cryptonight Syfer */
 	const uint8_t BLOCK_MAJOR_VERSION_8 = 8; /* LWMA1, CN-GPU, Halving */
 	const uint8_t BLOCK_MAJOR_VERSION_9 = 9; /* SWAP */
+	const uint8_t BLOCK_MAJOR_VERSION_10 = 10; /* SWAP */
 	const uint8_t BLOCK_MINOR_VERSION_0 = 0;
 	const uint8_t BLOCK_MINOR_VERSION_1 = 1;
 

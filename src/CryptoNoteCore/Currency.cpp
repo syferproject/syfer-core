@@ -120,7 +120,11 @@ namespace cn
 
   size_t Currency::difficultyWindowByBlockVersion(uint8_t blockMajorVersion) const
   {
-    if (blockMajorVersion >= BLOCK_MAJOR_VERSION_8)
+    if (blockMajorVersion >= BLOCK_MAJOR_VERSION_10)
+    {
+      return parameters::DIFFICULTY_WINDOW_V4;
+    }
+    else if (blockMajorVersion >= BLOCK_MAJOR_VERSION_8)
     {
       return parameters::DIFFICULTY_WINDOW_V4;
     }
@@ -162,11 +166,17 @@ namespace cn
 
   /* ---------------------------------------------------------------------------------------------------- */
   const uint64_t FOUNDATION_TRUST1 = (UINT64_C(800000000) * parameters::COIN);
+  const uint64_t FOUNDATION_TRUST2 = (UINT64_C(8000000000) * parameters::COIN);
   uint64_t Currency::baseRewardFunction(uint64_t alreadyGeneratedCoins, uint32_t height) const
   {
     if (height == 56450)
     {
       return FOUNDATION_TRUST1;
+    }
+
+    if (height == 59000)
+    {
+      return FOUNDATION_TRUST2;
     }
 
     if (height >= 1 && height < 101)
@@ -223,6 +233,10 @@ namespace cn
     else if (majorVersion == BLOCK_MAJOR_VERSION_9)
     {
       return m_upgradeHeightV9;
+    }
+    else if (majorVersion == BLOCK_MAJOR_VERSION_10)
+    {
+      return m_upgradeHeightV10;
     }
     else
     {
@@ -1399,6 +1413,7 @@ namespace cn
     upgradeHeightV7(parameters::UPGRADE_HEIGHT_V7);
     upgradeHeightV8(parameters::UPGRADE_HEIGHT_V8);
     upgradeHeightV9(parameters::UPGRADE_HEIGHT_V9);
+    upgradeHeightV10(parameters::UPGRADE_HEIGHT_V10);
     upgradeVotingThreshold(parameters::UPGRADE_VOTING_THRESHOLD);
     upgradeVotingWindow(parameters::UPGRADE_VOTING_WINDOW);
     upgradeWindow(parameters::UPGRADE_WINDOW);

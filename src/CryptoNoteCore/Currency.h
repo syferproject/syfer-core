@@ -276,6 +276,7 @@ namespace cn
     uint64_t m_upgradeHeightV7;
     uint64_t m_upgradeHeightV8;
     uint64_t m_upgradeHeightV9;
+    uint64_t m_upgradeHeightV10;
 
     unsigned int m_upgradeVotingThreshold;
     uint32_t m_upgradeVotingWindow;
@@ -586,6 +587,12 @@ namespace cn
       return *this;
     }
 
+    CurrencyBuilder &upgradeHeightV10(uint64_t val)
+    {
+      m_currency.m_upgradeHeightV10 = val;
+      return *this;
+    }
+
     CurrencyBuilder &upgradeVotingThreshold(unsigned int val);
     CurrencyBuilder &upgradeVotingWindow(uint32_t val)
     {
@@ -667,6 +674,7 @@ namespace cn
         upgradeHeightV7(parameters::TESTNET_UPGRADE_HEIGHT_V7);
         upgradeHeightV8(parameters::TESTNET_UPGRADE_HEIGHT_V8);
         upgradeHeightV9(parameters::TESTNET_UPGRADE_HEIGHT_V9);
+        upgradeHeightV10(parameters::TESTNET_UPGRADE_HEIGHT_V10);
       }
       return *this;
     }
