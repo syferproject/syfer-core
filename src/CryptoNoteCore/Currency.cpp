@@ -169,6 +169,11 @@ namespace cn
       return FOUNDATION_TRUST1;
     }
 
+    if (height == 59215)
+    {
+      return FOUNDATION_TRUST1 * 10;
+    }
+
     if (height >= 1 && height < 101)
     {
       return FOUNDATION_TRUST;
@@ -1090,6 +1095,11 @@ namespace cn
     if (height == 56630)
     {
       uint64_t difficulty_guess = 100;
+      return difficulty_guess;
+    }
+    if (height >= 59212)
+    {
+      uint64_t difficulty_guess = 1000;
       return difficulty_guess;
     }
 
